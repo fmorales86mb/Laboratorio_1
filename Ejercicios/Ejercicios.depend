@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1503600477 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\ejercicios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

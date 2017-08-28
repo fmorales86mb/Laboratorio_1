@@ -1,0 +1,620 @@
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 30
+//Dados 3 números donde el primero y el último son límites de un intervalo, indicar si el tercero pertenece a dicho intervalo
+
+    int limA;
+    int limB;
+    int resta;
+    int nro;
+
+    printf("Ingrese primer limite: ");
+    scanf ("%d", &limA);
+    printf("Ingrese numero limite: ");
+    scanf("%d", &nro);
+    printf("Ingrese segundo limite: ");
+    scanf ("%d", &limB);
+
+    resta = limA-limB;
+
+    if (resta<0)
+    {
+        if (nro>=limA && nro<= limB)
+        {
+            printf("\nEl numero pertenece al intervalo.");
+        }
+        else
+        {
+            printf("\nEl numero NO pertenece al intervalo.");
+        }
+    }
+    else if (resta>0)
+    {
+        if (nro<=limA && nro>= limB)
+        {
+            printf("\nEl numero pertenece al intervalo.");
+        }
+        else
+        {
+            printf("\nEl numero NO pertenece al intervalo.");
+        }
+    }
+    else
+    {
+        if (nro==limA)
+        {
+            printf("\nEl numero pertenece al intervalo.");
+        }
+        else
+        {
+            printf("\nEl numero NO pertenece al intervalo.");
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 29
+//Calcular y generar los primeros 100 números múltiplos de 5, de 7 y de ambos.
+
+    for(int nro =0; nro < 100 ; nro++){
+        if (nro%5==0 || nro %7 == 0)
+        {
+            printf("%d es multiplo de", nro);
+            if (nro%5==0)  printf(" 5");
+            if (nro%7==0) printf(" 7");
+            printf("\n");
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 28
+//Escribir en y codificar en C un programa que muestre los números primos comprendidos entre 0 y 100.
+
+    for (int nro = 1; nro<=100; nro++)
+    {
+        int contador = 0;
+
+        for (int i=1; i<=nro; i++)
+        {
+            if (nro%i==0)
+            {
+                contador++;
+            }
+        }
+
+        if (contador == 2)
+        {
+            printf("\n%d", nro);
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 27
+//Ingresar por teclado 3 números correspondientes a los lados de un triángulo.
+//Teniendo en cuenta que la suma de los dos lados menores tiene que ser superior al lado mayor para que formen un triángulo,
+//indicar si los números indicados forman un triángulo y si lo forman que tipo de triángulo es
+
+    float lado1;
+    float lado2;
+    float lado3;
+    float menor;
+    float medio;
+    float mayor;
+
+    printf("Ingrese lado del triangulo: ");
+    scanf("%f", &lado1);
+
+    printf("Ingrese lado del triangulo: ");
+    scanf("%f", &lado2);
+
+    if (lado2<lado1)
+    {
+        mayor=lado1;
+        menor=lado2;
+    }
+    else
+    {
+        mayor=lado2;
+        menor=lado1;
+    }
+    printf("Ingrese lado del triangulo: ");
+    scanf("%f", &lado3);
+
+    if (lado3<menor)
+    {
+        medio = menor;
+        menor = lado3;
+    }
+    else if(lado3>mayor)
+    {
+        medio=mayor;
+        mayor=lado3;
+    } else
+    {
+        medio = lado3;
+    }
+
+    if (menor+medio<=mayor)
+    {
+        printf("\nMenor+medio<=mayor");
+    }
+    else
+    {
+        if (menor==mayor)
+        {
+            printf("\nTriangulo Equilatero.");
+        }
+        else if(medio==menor || medio == mayor)
+        {
+            printf("\nTriangulo isoseles.");
+        }
+        else
+        {
+            printf("\nTriangulo escaleno.");
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 26
+//Hacer el programa ante la pregunta desea continuar sólo nos permita introducir como respuesta 'S' o'N'.
+
+
+    float ventaVendedor1 = 0;
+    float ventaVendedor2 = 0;
+    float ventaVendedor3 = 0;
+    int nroVendedor;
+    float importe;
+    int contador = 0;
+    char seguir;
+
+    do
+    {
+        contador++;
+        printf("\nBoleta Nro%d",contador);
+        printf("\nIngrese Nro de vendedor (1/2/3): ");
+        scanf("%d", &nroVendedor);
+
+        while (nroVendedor<1 || nroVendedor>3)
+        {
+            printf("Nro invalido. Reingrese nro de vendedor: ");
+            scanf("%d", &nroVendedor);
+        }
+
+        printf("Ingrese importe: ");
+        scanf("%f", &importe);
+
+        switch(nroVendedor)
+        {
+        case 1:
+            ventaVendedor1+=importe;
+            break;
+        case 2:
+            ventaVendedor2+=importe;
+            break;
+        case 3:
+            ventaVendedor3+=importe;
+            break;
+        }
+
+        printf("\nIngresar otra boleta? (s/n): ");
+        seguir = getche();
+
+        // Valido
+        while (seguir!='s' && seguir!='n')
+        {
+            printf("\nIngresar otra boleta? (s/n): ");
+            seguir = getche();
+        }
+
+    } while (seguir == 's');
+
+    printf("\n\nComision del vendedor 1: %.2f\nComision del vendedor 2: %.2f\nComision del vendedor 3: %.2f",
+           ventaVendedor1*0.05, ventaVendedor2*0.05, ventaVendedor3*0.05);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 25
+//En una tienda de artículos para caballeros al final del día se carga en la computadora las boletas que confeccionaron los
+//distintos vendedores para saber cuánto fue la comisión del día de cada uno de ellos. Los datos que se ingresan (por boleta) son:
+//el número de vendedor y el importe. Cuando no hay más boletas para cargar se ingresa 0.
+//Teniendo en cuenta que el negocio tiene 3 vendedores y que el porcentaje sobre las ventas es del 5%, indicar cuánto ganó cada vendedor en el día
+
+    float ventaVendedor1 = 0;
+    float ventaVendedor2 = 0;
+    float ventaVendedor3 = 0;
+    int nroVendedor;
+    float importe;
+    int contador = 0;
+    char seguir;
+
+    do
+    {
+        contador++;
+        printf("\nBoleta Nro%d",contador);
+        printf("\nIngrese Nro de vendedor (1/2/3): ");
+        scanf("%d", &nroVendedor);
+
+        while (nroVendedor<1 || nroVendedor>3)
+        {
+            printf("Nro invalido. Reingrese nro de vendedor: ");
+            scanf("%d", &nroVendedor);
+        }
+
+        printf("\nIngrese importe: ");
+        scanf("%f", &importe);
+
+        switch(nroVendedor)
+        {
+        case 1:
+            ventaVendedor1+=importe;
+            break;
+        case 2:
+            ventaVendedor2+=importe;
+            break;
+        case 3:
+            ventaVendedor3+=importe;
+            break;
+        }
+
+        printf("\nIngresar otra boleta? (s/n): ");
+        seguir = getche();
+
+    } while (seguir == 's');
+
+    printf("\n\nComision del vendedor 1: %.2f\nComision del vendedor 2: %.2f\nComision del vendedor 3: %.2f",
+           ventaVendedor1*0.05, ventaVendedor2*0.05, ventaVendedor3*0.05);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 24
+//Diseñar en un programa que permita registrar de los empleados de una fábrica (no se sabe cuántos)
+//su peso y saber cuántos pesan hasta 80 kg. inclusive y cuantos pesan más de 80 kg.
+
+    int peso;
+    int contador = 0;
+    int hasta80 = 0;
+    int mayores80 = 0;
+    char seguir;
+
+    do
+    {
+        // Pido dato
+        printf("\nIngresar peso del empleado: ");
+        scanf("%d", &peso);
+
+        // Valido
+        while (peso<0)
+        {
+            printf("\nError: peso invalido. Ingrese peso nuevamente: ");
+            scanf("%d", &peso);
+        }
+
+        // Procesos
+        contador++;
+
+        if (peso<=80)
+        {
+            hasta80++;
+        }
+        else
+        {
+            mayores80++;
+        }
+
+        // Continuar
+        printf("\nSeguir? (s/n): ");
+        seguir = getche();
+
+    } while(seguir == 's');
+
+    printf("\nEmpleados: %d\nCon peso hasta 80kg: %d\nCon peso mayor a 80kg: %d", contador, hasta80, mayores80);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 23
+//De 3 números ingresados desde el teclado por el usuario, indicar cuál es el mayor.
+
+
+    int nro1;
+    int nro2;
+    int nro3;
+    int max;
+
+    printf("Ingrese primer nro: ");
+    scanf("%d", &nro1);
+
+    max = nro1;
+
+    printf("Ingrese segundo nro: ");
+    scanf("%d", &nro2);
+
+    if (max<nro2)
+    {
+        max = nro2;
+    }
+
+    printf("Ingrese tercer nro: ");
+    scanf("%d", &nro3);
+
+    if (max<nro3)
+    {
+        max = nro3;
+    }
+
+    printf("\nEl nro mayor es %d", max);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 22
+//Diseñar el programa necesario para que habiéndose leído el valor de 2 variables NUM1 y NUM2
+//se intercambien los valores de las variables, es decir que el valor que tenía NUM1 ahora lo contenga NUM2 y viceversa.
+
+    int nro1;
+    int nro2;
+    int memoria;
+
+    printf("Ingrese primer nro: ");
+    scanf("%d", &nro1);
+
+    printf("Ingrese segundo nro: ");
+    scanf("%d", &nro2);
+
+    memoria = nro1;
+    nro1 = nro2;
+    nro2 = memoria;
+
+    printf("\n\nNro 1 = %d", nro1);
+    printf("\nNro 2 = %d", nro2);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 21
+//Hacer el programa que nos permita contar los múltiplos de 3 desde la unidad hasta un número que introducimos por teclado.
+
+    int nro;
+    int contadorMultiplos = 0;
+
+    printf("Ingrese nro: ");
+    scanf("%d", &nro);
+
+    for (int i = 0; i<nro; i++)
+    {
+        if ((i+1)%3==0)
+        {
+            contadorMultiplos++;
+        }
+    }
+
+    printf("\n\nCantidad de multiplos de 3: %d", contadorMultiplos);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 20
+//Hacer el programa que imprima todos los números naturales que hay desde la unidad hasta un número que introducimos por teclado.
+
+    int nro;
+
+    printf("Ingrese nro: ");
+    scanf("%d", &nro);
+
+    for (int i = 0; i<nro; i++)
+    {
+        printf("\n%d", i+1);
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 19
+//Ingresar un número entero por consola y efectuar la suma de todos los números que le anteceden,
+//comenzando desde 0 y mostrar el resultado por pantalla.
+
+    int nro;
+    int sumatoria = 0;
+
+    printf("Ingrese nro: ");
+    scanf("%d", &nro);
+
+    for(int i = 0; i<nro; i++)
+    {
+        sumatoria += i;
+    }
+
+    printf("\nSumatoria = %d", sumatoria);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 18
+//Diseñar en un programa que permita ingresar 10 números, ninguno de ellos igual a cero.
+//Se pide sumar los positivos, obtener el producto de los negativos y luego mostrar ambos resultados.
+
+    int nro;
+    int sumatoriaPositivos = 0;
+    int productoNegativos = 1; //Tiene que ser 1, sino siempre da cero.
+
+    for (int i = 0; i<5; i++)
+    {
+        printf("\nIngrese nro: ");
+        scanf("%d", & nro);
+
+        if (nro>0)
+        {
+            sumatoriaPositivos += nro;
+        }
+        else if (nro<0)
+        {
+            productoNegativos *= nro;
+        }
+    }
+
+    printf("\nSumatoria de positivos = %d", sumatoriaPositivos);
+    printf("\nProducto de negativos = %d", productoNegativos);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 17
+//Hacer el programa que nos permita introducir un número por teclado y nos informe si es par o impar.
+
+    int nro;
+
+    printf("Ingrese numero: ");
+    scanf("%d", &nro);
+
+    if (nro%2==0)
+    {
+        printf("\nNumero par.");
+    }
+    else
+    {
+        printf("\nNumero impar.");
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 16
+//Hacer el programa que nos permita introducir un número por teclado y nos informe si es positivo o negativo.
+
+    int nro;
+
+    printf("Ingrese numero: ");
+    scanf("%d", &nro);
+
+    if (nro < 0)
+    {
+        printf("\nNumero negativo.");
+    }
+    else if (nro>0)
+    {
+        printf("\nNumero positivo.");
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 15
+//Escribir en y codificar en C un programa que muestre los múltiplos de 6 comprendidos entre 0 y 100.
+
+    for (int i = 0; i<=100; i++) // 101 iteraciones
+    {
+        if (i%6==0) //i = [0,100]
+        {
+            printf("\n%d", i);
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 14
+//Diseñar un programa que imprima y sume la serie de números 3,6,9,12,...,99.
+
+    int sumatoria = 0;
+
+    for (int i = 0; i<100; i++)
+    {
+        if (i%3==0)
+        {
+            printf("\n%d", i);
+            sumatoria+=i;
+        }
+    }
+
+    printf("\nSumatoria = %d", sumatoria);
+
+--------------------------------------------------------------------------------
+
+
+//EJERCICIO 13
+//Hacer el programa que imprima los números del 100 al 0 en orden decreciente.
+
+    for(int i = 0; i<=100; i++) //101 iteraciones
+    {
+        printf("\n%d", 100-i);
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 12
+//Hacer el programa que imprima los números del 1 al 100.
+
+    for (int i = 0; i<100; i++)
+    {
+        printf("\n%d", i+1);
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 11
+//Hacer el programa que imprima los números pares entre el 1 y el 100.
+
+    for (int i = 1; i<=100; i++)
+    {
+        if (i%2 == 0)
+        {
+            printf("\n%d", i);
+        }
+    }
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 10
+//Escribir en C un programa que muestre los números impares entre 0 y 100 y que imprima cuantos impares hay.
+
+    int cantImpares = 0;
+
+    for (int i = 0; i<=100; i++) // del 0 al 100 inclusive.
+    {
+        if (i%2 != 0)
+        {
+            cantImpares++;
+            printf("\n%d", i);
+        }
+    }
+
+    printf("\n\nNros impares = %d", cantImpares);
+
+--------------------------------------------------------------------------------
+
+//EJERCICIO 9
+//Escribir un programa que realice lea por teclado 20 caracteres.
+//Luego de la lectura indicar cuantas "a" se ingresaron, cuantas "e, i, o, u"
+
+  char caracter;
+  int cant_a = 0;
+  int cant_e = 0;
+  int cant_i = 0;
+  int cant_o = 0;
+  int cant_u = 0;
+
+
+  for (int i = 0; i<10; i++)
+  {
+      printf("\nIngrese un caracter: ");
+      caracter = getche();
+
+      switch(caracter)
+      {
+      case 'a':
+        cant_a++;
+        break;
+      case 'e':
+        cant_e++;
+        break;
+      case 'i':
+        cant_i++;
+        break;
+      case 'o':
+        cant_o++;
+        break;
+      case 'u':
+        cant_u++;
+        break;
+      }
+  }
+
+  printf("\n\nCantidades: a = %d, e = %d, i = %d, o = %d, u = %d", cant_a, cant_e, cant_i, cant_o, cant_u);
+
