@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1503949983 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\biblioteca\bibliofunciones\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1503950615 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\biblioteca\bibliofunciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1503950429 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\biblioteca\bibliofunciones\utn.h
+
