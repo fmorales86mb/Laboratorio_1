@@ -114,7 +114,24 @@ int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLi
 */
 int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 {
+    int salida = -1;
+	char dato[2000];
+    int length;
 
-    strcpy(input,"Sheldon");
-    return 0;
+    printf("\n%s", message);
+    gets(dato);
+    length = strlen(dato);
+
+    if (length>hiLimit || length<lowLimit)
+    {
+        printf("\n%s\n", eMessage);
+        system("pause");
+    }
+    else
+    {
+        *input = dato;
+        salida = 0;
+    }
+
+    return salida;
 }
