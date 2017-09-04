@@ -17,7 +17,6 @@
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
 
@@ -50,6 +49,55 @@
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+//EJERCICIO 31
+//Por teclado se ingresa el valor hora de un empleado.
+//Posteriormente se ingresa el nombre del empleado, la antigüedad y la cantidad de horas trabajadas en el mes.
+//Se pide calcular el importe a cobrar teniendo en cuenta que el total resulta de multiplicar el valor hora por la cantidad de horas trabajadas,
+//hay que sumarle la cantidad de años trabajados multiplicados por $30, y al total de todas esas operaciones restarle el 13% en concepto de descuentos.
+//Imprimir el recibo correspondiente con el nombre, la antigüedad, el valor hora, el total a cobrar en bruto,
+//el total de descuentos y el valor neto a cobrar
+    #define TAM 50
+
+    float valorHora;
+    char nombre[TAM];
+    int antiguedad;
+    int horasMes;
+    float salarioBruto;
+    float descuento;
+    float salarioNeto;
+
+    int flag;
+
+    do
+    {
+        flag=getFloat(&valorHora, "Ingrese el valor hora: ", "Valor hora invalido.", 0, 2000);
+    }while(flag!=0);
+
+    do
+    {
+        flag=getString(nombre, "Ingrese nombre del empleado: ", "Nombre invalido.",2, TAM);
+    }while(flag!=0);
+
+    do
+    {
+        flag=getInt(&antiguedad, "Ingrese antiguedad: ", "Antiguedad invalida.", 0, 100);
+    }while(flag!=0);
+
+    do
+    {
+        flag=getInt(&horasMes, "ingrese la cantidad de horas trabajadas en el mes: ", "Cantidad invalida.", 0, 720);
+    }while(flag!=0);
+
+    system("cls");
+
+    salarioBruto = (valorHora * horasMes) + (antiguedad*30);
+    descuento = salarioBruto*0.13;
+    salarioNeto = salarioBruto - descuento;
+
+    printf("\nNombre: %s\nAntiguedad: %d\nValor Hora: %.2f\nSueldo Bruto: %.2f\nDescuentos: %.2f\nSueldo Neto: %.2f",
+           nombre, antiguedad, valorHora, salarioBruto, descuento, salarioNeto);
 
 --------------------------------------------------------------------------------
 //EJERCICIO 30

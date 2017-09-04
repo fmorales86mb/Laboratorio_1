@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <ctype.h>
 
 /**
 * \brief Solicita un número al usuario y lo chequea
@@ -24,7 +25,7 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
     if (nro>hiLimit || nro<lowLimit)
     {
         printf("\n%s\n", eMessage);
-        system("pause");
+        //system("pause");
     }
     else
     {
@@ -57,7 +58,7 @@ int getFloat(float* input,char message[],char eMessage[], float lowLimit, float 
     if (nro>hiLimit || nro<lowLimit)
     {
         printf("\n%s\n", eMessage);
-        system("pause");
+        //system("pause");
     }
     else
     {
@@ -86,11 +87,12 @@ int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLi
 
     printf("\n%s", message);
     dato = getche();
+    dato = tolower(dato);
 
     if (dato!=hiLimit && dato!=lowLimit)
     {
         printf("\n%s\n", eMessage);
-        system("pause");
+        //system("pause");
     }
     else
     {
@@ -119,17 +121,19 @@ int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLi
     int length;
 
     printf("\n%s", message);
+    fflush( stdin );
     gets(dato);
     length = strlen(dato);
 
     if (length>hiLimit || length<lowLimit)
     {
         printf("\n%s\n", eMessage);
-        system("pause");
+        //system("pause");
     }
     else
     {
-        *input = dato;
+        //*input = dato;
+        strcpy(input, dato);
         salida = 0;
     }
 

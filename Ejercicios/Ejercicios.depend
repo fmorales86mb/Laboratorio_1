@@ -4,14 +4,25 @@
 	<stdlib.h>
 	<conio.h>
 
-1504288071 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\funciones\funciones.c
+1504288150 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\funciones\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 
-1504288071 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.c
+1504558539 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
+
+1504558538 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\ejercicios\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"../Bibliotecas/Funciones/utn.h"
+	"../Bibliotecas/Input/input.h"
+
+1504288116 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\funciones\utn.h
+
+1460746094 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.h
 
