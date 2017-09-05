@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1504560580 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1504641196 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\ej 1\funcej1clase7.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Bibliotecas/Input/input.h"
+
+1460746094 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.h
+
+1504645623 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\ej 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Bibliotecas/Input/input.h"
+

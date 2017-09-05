@@ -45,10 +45,191 @@
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
+//EJERCICIO 34
+//Introducir una letra por teclado. Imprimirla cinco veces en filas consecutivas, pero en cada impresión ir desplazándola 4 columnas a la derecha
+
+    #define TAM 50
+
+    char letra;
+    int i;
+    char desplazar[TAM]="";
+
+    printf("Ingrese letra: ");
+
+    letra = getche();
+    fflush( stdin );
+    for(i=0; i<5; i++)
+    {
+        printf("\n%s%c",desplazar,letra);
+        strcat(desplazar, "    ");
+    }
 
 --------------------------------------------------------------------------------
+//EJERCICIO 33
+//En un restaurante hay 2 mozos; al final del día su dueño entrega un plus al mozo que más clientes haya atendido,
+//ese plus es de 1/3 de lo que facturó cada mozo. El proceso termina cuando se ingresa un número de mozo 0
+
+    #define ELEMENTOS 2
+    #define TAM 200
+
+    float facturas [TAM];
+    int mozo[TAM];
+    int flag;
+    int cantidad = 0;
+    int cantMozo1 = 0;
+    int cantMozo2 = 0;
+    float factMozo1 =0;
+    float factMozo2 =0;
+    float plus;
+    int i;
+
+    do
+    {
+        flag = getInt(&mozo[cantidad], "Ingrese mozo (1 o 2) o cero para salir: ", "Nro invalido.", 0, 2);
+    } while (flag!=0);
+
+    while ( mozo[cantidad]!=0)
+    {
+        //factura
+        do
+        {
+            flag=getFloat(&facturas[cantidad], "Valor de factura: ", "Factura invalida.", 0, 10000);
+        } while (flag!=0);
+
+        cantidad++;
+
+        //mozo
+        do
+        {
+            flag = getInt(&mozo[cantidad], "Ingrese mozo (1 o 2) o cero para salir: ", "Nro invalido.", 0, 2);
+        } while (flag!=0);
+    }
+
+    //cant por mozo
+    for (i=0; i<cantidad; i++)
+    {
+        if (mozo[i]==1)
+        {
+            cantMozo1++;
+        }
+        else if(mozo[i]==2)
+        {
+            cantMozo2++;
+        }
+    }
+
+    //facturacion x mozo
+    for (i=0; i<cantidad; i++)
+    {
+        if (mozo[i]==1)
+        {
+            factMozo1+=facturas[i];
+        }
+        else if(mozo[i]==2)
+        {
+            factMozo2+=facturas[i];
+        }
+    }
+
+    if (cantMozo1<cantMozo2)
+    {
+        plus = factMozo2*1/3;
+        printf("\nMozo 2, plus de %.2f", plus);
+    }
+    else if (cantMozo1>cantMozo2)
+    {
+        plus = factMozo1*1/3;
+        printf("\nMozo 1, plus de %.2f", plus);
+    }
+    else
+    {
+        plus= (factMozo1+factMozo2)*1/3;
+        printf("\nMozo 1, plus de %.2f", plus);
+        printf("\nMozo 2, plus de %.2f", plus);
+    }
 
 --------------------------------------------------------------------------------
+//EJERCICIO 32
+//En una empresa se carga por teclado los siguientes datos:
+//nombre del empleado, nacionalidad (A argentino, E -extranjero),
+//estudios cursados (1- primaria, 2 - secundario, 3 - universitario) y antigüedad.
+
+    #define TAM 50
+    #define ELEMENTOS 20
+
+    char nombres[ELEMENTOS][TAM];
+    char nom[TAM];
+    char nacionalidad[ELEMENTOS];
+    int estudios[ELEMENTOS];
+    int antiguedad[ELEMENTOS];
+    int cantSelec = 0;
+    int cantidad = 0;
+    int porcentaje;
+    int flag;
+    char seguir = 's';
+    int i;
+
+    do
+    {
+        //Nombre empleado
+        do
+        {
+            flag = getString(nom, "Ingrese nombre del empleado: ", "Nombre invalido.", 2, TAM);
+        }while (flag!=0);
+        strcpy(nombres[cantidad], nom);
+
+        // Nacionalidad
+        do
+        {
+            flag = getChar(&nacionalidad[cantidad], "Nacionalidad (A argentino, E extranjero): ", "Nacionalidad invalida.", 'a', 'e');
+        }while (flag!=0);
+
+        //Estudios
+        do
+        {
+            flag = getInt(&estudios[cantidad], "\nIngrese estudios (1- primaria, 2 - secundario, 3 - universitario): ", "Estudios invalidos.", 1, 3);
+        }while (flag!=0);
+
+        //Antiguedad
+        do
+        {
+            flag = getInt(&antiguedad[cantidad], "Ingrese antiguedad: ", "Antiguedad invalida.", 0, 100);
+        }while (flag!=0);
+
+        //Continuar
+        do
+        {
+            flag = getChar(&seguir, "Desea ingresar otro empleado? (S/N): ", "Letra invalida.", 's', 'n');
+        }while (flag!=0);
+
+        cantidad++;
+        system("cls");
+
+    }while(seguir=='s');
+
+    // muestro todos
+    for(i=0; i<cantidad; i++)
+    {
+        printf("\nNombre: %s\nNacionalidad: %c\nEstudios: %d\nAntiguedad: %d\n\n", nombres[i], nacionalidad[i], estudios[i], antiguedad[i]);
+    }
+
+    system("pause");
+    system("cls");
+
+//Se pide emitir un listado con aquellos empleados que sean extranjeros, tengan estudios universitarios
+//y tengan una antigüedad igual o mayor a 20 años y por último indicar cuantos son y qué porcentaje son respecto del total de empleados de la empresa
+
+    for(i=0; i<cantidad; i++)
+    {
+        if (nacionalidad[i]=='e' && estudios[i]==3 && antiguedad[i]>=20)
+        {
+            printf("\nNombre: %s\nNacionalidad: %c\nEstudios: %d\nAntiguedad: %d\n", nombres[i], nacionalidad[i], estudios[i], antiguedad[i]);
+            cantSelec++;
+        }
+    }
+
+    porcentaje = (float)cantSelec/cantidad*100;
+    printf("\nPorcentaje: %d\n", porcentaje);
 
 --------------------------------------------------------------------------------
 //EJERCICIO 31

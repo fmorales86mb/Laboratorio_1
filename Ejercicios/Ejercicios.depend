@@ -9,16 +9,18 @@
 	<stdlib.h>
 	<conio.h>
 
-1504558539 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.c
+1504560580 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\bibliotecas\input\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
+	<ctype.h>
 
-1504558538 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\ejercicios\main.c
+1504626445 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\ejercicios\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
+	<string.h>
 	"../Bibliotecas/Funciones/utn.h"
 	"../Bibliotecas/Input/input.h"
 
