@@ -27,8 +27,15 @@ int main()
     int flagLegajo = 0;
     int cantidad=0;
     int indice;
+    char nombreAux[TAM];
+    char apellidoAux[TAM];
+    int legajoAux;
+    int repetido = 0;
     int i;
+    int e;
     int legajoSeleccionado;
+    int legajoOrdenado[CANT];
+    int min;
 
     do
     {
@@ -61,18 +68,25 @@ int main()
                 } while(flag!=0);
                 do
                 {
-                    flag = getInt(&legajo[cantidad], "Ingrese legajo: ", "Legajo invalido.", 1, 1000);
+                    // utilizo una variable aux porque sino no garantizo que no haya legajos repetidos.
+                    flag = getInt(&legajoAux, "Ingrese legajo: ", "Legajo invalido.", 1, 1000);
                     // chequeo que el legajo no esté repetido.
                     if (flag==0)
                     {
+                        repetido = 0;
                         for (i=0; i<cantidad; i++)
                         {
-                            if (legajo[cantidad]== legajo[i])
+                            if (legajoAux == legajo[i])
                             {
                                 flag=-1;
                                 printf("\tLegajo repetido.");
+                                repetido =1;
                                 break;
                             }
+                        }
+                        if (repetido == 0)
+                        {
+                            legajo[cantidad] = legajoAux;
                         }
                     }
                 } while(flag!=0);
@@ -119,59 +133,109 @@ int main()
             case 3: //modificacion
                 system("cls");
 
+                //valido legajo ingresado.
                 do
                 {
                     flag = getInt(&legajoSeleccionado, "Ingrese legajo que desea modificar: ", "Nro de legajo invalido.", 0, 1000);
-                    if (flag == 0)
+                }while(flag != 0);
+
+                // tareas con el legajo
+                if (flag == 0)
+                {
+                    for (i=0; i<cantidad; i++)
                     {
-                        for (i=0; i<cantidad; i++)
+                        // busco el indice del legajo seleccionado.
+                        if (legajoSeleccionado == legajo[i])
                         {
-                            if (legajoSeleccionado == legajo[i])
-                            {
-                                indice = i;
-                                flagLegajo = 1;
-                                break;
-                            }
-                        }
-                        if (flagLegajo == 1)
-                        {
-                            printf("\nNombre: %s\nApellido: %s\nLegajo: %d\n", nombre[indice], apellido[indice], legajo[indice]);
-
-                            do
-                            {
-                                printf("\n--- MENU Modificar---\n");
-
-                                printf("\n1-Nombre.");
-                                printf("\n2-Apellido.");
-                                printf("\n3-Legajo.");
-                                printf("\n4-Salir.\n");
-
-                                do
-                                {
-                                    flag=getInt(&opcion, "Elija una opcion: ", "Opcion invalida.", 1, 4);
-                                } while(flag!=0);
-
-                                switch(opcion)
-                                {
-                                    case 1:
-                                        break;
-                                    case 2:
-                                        break;
-                                    case 3:
-                                        break;
-                                    case 4:
-                                        break;
-                                }
-                            }while(seguir=='s');
-                        }
-                        else
-                        {
-                            printf("\nLegajo no encontrado.\n");
-                            system("pause");
+                            indice = i;
+                            flagLegajo = 1;
+                            break;
                         }
                     }
 
-                }while(flag != 0);
+                    // tareas si encontré el legajo
+                    if (flagLegajo == 1)
+                    {
+
+                        // muestro los datos encontrados + menú
+                        do
+                        {
+                            system("cls");
+                            printf("\nNombre: %s\nApellido: %s\nLegajo: %d\n", nombre[indice], apellido[indice], legajo[indice]);
+
+                            printf("\n--- MENU Modificar---\n");
+
+                            printf("\n1-Nombre.");
+                            printf("\n2-Apellido.");
+                            printf("\n3-Legajo.");
+                            printf("\n4-Salir.\n");
+
+                            do
+                            {
+                                flag=getInt(&opcion, "Elija una opcion: ", "Opcion invalida.", 1, 4);
+                            } while(flag!=0);
+
+                            switch(opcion)
+                            {
+                                case 1: //nombre
+                                    system("cls");
+                                    printf("\nNombre: %s\nApellido: %s\nLegajo: %d\n", nombre[indice], apellido[indice], legajo[indice]);
+                                    do
+                                    {
+                                        flag = getString(&nombre[indice], "Ingrese nuevo nombre: ", "Nombre invalido.", 1, TAM);
+                                    } while(flag!=0);
+                                    break;
+
+                                case 2: //apellido
+                                    system("cls");
+                                    printf("\nNombre: %s\nApellido: %s\nLegajo: %d\n", nombre[indice], apellido[indice], legajo[indice]);
+                                    do
+                                    {
+                                        flag = getString(&apellido[indice], "Ingrese nuevo apellido: ", "Apellido invalido.", 1, TAM);
+                                    } while(flag!=0);
+                                    break;
+
+                                case 3: //legajo
+                                    system("cls");
+                                    printf("\nNombre: %s\nApellido: %s\nLegajo: %d\n", nombre[indice], apellido[indice], legajo[indice]);
+                                    do
+                                    {
+                                        flag = getInt(&legajoAux, "Ingrese nuevo legajo: ", "legajo invalido.", 0, 1000);
+                                        if (flag==0)
+                                        {
+                                            repetido =0;
+                                            for (i=0; i<cantidad; i++)
+                                            {
+                                                if (legajoAux == legajo[i])
+                                                {
+                                                    flag=-1;
+                                                    printf("\tLegajo repetido.");
+                                                    repetido =1;
+                                                    break;
+                                                }
+                                            }
+                                            if (repetido == 0)
+                                            {
+                                                legajo[indice] = legajoAux;
+                                            }
+                                        }
+                                    } while(flag!=0);
+
+                                    break;
+
+                                case 4:
+                                    seguir = 'n';
+                                    break;
+                            }
+                        }while(seguir=='s');
+                        seguir = 's';
+                    }
+                    else
+                    {
+                        printf("\nLegajo no encontrado.\n");
+                        system("pause");
+                    }
+                }
 
                 break;
             case 4:
@@ -179,13 +243,33 @@ int main()
 
                 for(i=0; i<cantidad; i++)
                 {
-                    printf("\nNombre: %s\nApellido %s\nLegajo %d\n\n", nombre[i], apellido[i], legajo[i]);
+                    // legajos activos
+                    if (legajo[i] >=0)
+                    {
+                        // Ordeno alfabeticamente
+
+                        for (i=0; i<cantidad; i++)
+                        {
+                            for (e = i;e<cantidad;e++)
+                            {
+                                // obtengo min
+                                if (e==i || stricmp(apellido[e], menor)<0)
+                                {
+                                    strcpy(menor, apellido[e]);
+                                    min = e;
+                                }
+                                //pongo cada min en orden.
+                            }
+
+                        }
+                        printf("\nNombre: %s\nApellido %s\nLegajo %d\n\n", nombre[min], apellido[min], legajo[min]);
+                    }
                 }
 
                 system("pause");
                 break;
             case 5:
-
+                seguir = 'n';
                 break;
         }
 
