@@ -60,12 +60,24 @@ int main()
 
     mostrarMedicamentos(listaMedicamentos, MED);
     printf("\n***************************************************\n");
+    // Clientes con descripción del medicamento
     mostrarClientes(listaClientes, CLI, listaMedicamentos, MED);
+
+    // Clientes que compraron ibuprofeno
+
+    // Cada medicamento y los clientes que lo compraron
+
+    // stock disponible para el medicamento ingresado por el usuario
+
+    // total de ventas en $
+
+    // el o los medicamentos mas vendidos.
 
 
 
     return 0;
 }
+
 
 void inicializarLaboratorios(eLaboratorio laboratorios[], int sizeLab)
 {
@@ -86,7 +98,6 @@ void inicializarLaboratorios(eLaboratorio laboratorios[], int sizeLab)
 
 void inicializarMedicamentos(eMedicamento medicamentos[], int sizeMed)
 {
-
     int id[]= {100,101,102,103,104};
     char descripcion[][30]= {"Ibuprofeno","Tafirol","Diclofenac","Bayaspirina", "Mejoralito"};
     float precio[]= {60,85,105,15,28};
@@ -108,9 +119,9 @@ void inicializarMedicamentos(eMedicamento medicamentos[], int sizeMed)
 
     }
 }
+
 void inicializarClientes(eCliente clientes[], int sizeCli)
 {
-
     int id[]= {111,222,333,444,555,666,777,888,999,101010};
     char nombre[][30]= {"Geronimo","Adalberto","Inocencia","Felipe","Lucrecia","Ermenegildo","Efigenia","Dora","Anastacia","Armando"};
     int medicamento[]= {104,100,101,101,101,102,103,101,101,100};
@@ -138,6 +149,7 @@ void mostrarMedicamentos(eMedicamento medicamentos[], int sizeMed)
     }
 
 }
+
 void mostrarClientes(eCliente clientes[], int sizeCli, eMedicamento medicamentos[], int sizeMed)
 {
     int i;
