@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1503069704 source:c:\users\alumno\desktop\repetitivas\main.c
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+
