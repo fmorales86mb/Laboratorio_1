@@ -1,0 +1,6 @@
+1. Clientes con su medicamento
+2. Clientes que compran ibuprofeno
+3. Por cada medicamento sus clientes.
+4. Stock de medicamento ingresado por el usuario.
+5. total de ventas
+6. el medicamento mas vendido (puede ser mas de uno)

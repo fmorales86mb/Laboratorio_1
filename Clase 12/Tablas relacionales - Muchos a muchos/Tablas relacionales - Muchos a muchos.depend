@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1506611131 source:c:\users\alumno\desktop\tablas relacionales - muchos a muchos\funcabm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcABM.h"
+
+1506611477 c:\users\alumno\desktop\tablas relacionales - muchos a muchos\funcabm.h
+
+1506611259 source:c:\users\alumno\desktop\tablas relacionales - muchos a muchos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcABM.h"
+
