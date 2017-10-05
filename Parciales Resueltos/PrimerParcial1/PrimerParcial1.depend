@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1506631818 source:d:\desarrollo\utn\laboratorio_1\bibliotecas\bibliostr\validacionstr.c
+
+1506031330 source:d:\desarrollo\utn\laboratorio_1\bibliotecas\input\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507079559 source:d:\desarrollo\utn\parciales resueltos\primerparcial1\funcparcial.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../../Laboratorio_1/Bibliotecas/Input/input.h"
+	"../../Laboratorio_1/Bibliotecas/biblioStr/validacionStr.h"
+	"funcParcial.h"
+
+1506031330 d:\desarrollo\utn\laboratorio_1\bibliotecas\input\input.h
+
+1506631818 d:\desarrollo\utn\laboratorio_1\bibliotecas\bibliostr\validacionstr.h
+
+1507079484 d:\desarrollo\utn\parciales resueltos\primerparcial1\funcparcial.h
+
+1507079573 source:d:\desarrollo\utn\parciales resueltos\primerparcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Laboratorio_1/Bibliotecas/Input/input.h"
+	"../../Laboratorio_1/Bibliotecas/biblioStr/validacionStr.h"
+	"funcParcial.h"
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="..\..\Laboratorio_1\Bibliotecas\biblioStr\validacionStr.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="350" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="funcParcial.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2305" topLine="24" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="30" />
+			<Collapse line="58" />
+			<Collapse line="74" />
+		</Folding>
+	</File>
+	<File name="funcParcial.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="718" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="723" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="..\..\Laboratorio_1\Bibliotecas\Input\input.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2129" topLine="69" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

@@ -7,3 +7,23 @@
 	<stdio.h>
 	<stdlib.h>
 
+1506631818 source:d:\desarrollo\utn\laboratorio_1\bibliotecas\bibliostr\validacionstr.c
+
+1506031330 source:d:\desarrollo\utn\laboratorio_1\bibliotecas\input\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507041716 source:d:\desarrollo\utn\laboratorio_1\clase 11\abm con relaciones y hardcode\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../../Bibliotecas/biblioStr/validacionStr.h"
+	"../../Bibliotecas/Input/input.h"
+
+1506631818 d:\desarrollo\utn\laboratorio_1\bibliotecas\bibliostr\validacionstr.h
+
+1506031330 d:\desarrollo\utn\laboratorio_1\bibliotecas\input\input.h
+

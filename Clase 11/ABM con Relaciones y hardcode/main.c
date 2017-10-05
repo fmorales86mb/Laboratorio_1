@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "../../Bibliotecas/biblioStr/validacionStr.h"
+#include "../../Bibliotecas/Input/input.h"
 
 #define LAB 3
 #define MED 5
@@ -41,11 +44,16 @@ typedef struct
 void inicializarLaboratorios(eLaboratorio[], int);
 void inicializarMedicamentos(eMedicamento[], int);
 void inicializarClientes(eCliente[], int);
-
 void mostrarMedicamentos(eMedicamento[], int);
 //void mostrarClientes(eCliente[], int);
 eMedicamento traerMedicamentoPorId (eMedicamento lista[], int tam, int id);
+eMedicamento traerMedicamentoPorDescripcion (eMedicamento listaMedicamentos[], int sizeMed, char descripcion []);
 void mostrarClientes(eCliente clientes[], int sizeCli, eMedicamento medicamentos[], int sizeMed);
+void MostrarClientesConMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed, int idCli);
+void mostrarClientesPorMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento medicamento);
+void mostrarClientesPorCadaMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed);
+void mostrarStockPorMedicamento(eMedicamento listaMedicamentos[], int sizeMed, eMedicamento medicamento);
+float totalVentas (eCliente listaCliente[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed);
 
 int main()
 {
@@ -57,23 +65,54 @@ int main()
     inicializarMedicamentos(listaMedicamentos, MED);
     inicializarClientes(listaClientes, CLI);
 
-
+    printf("\t Mostrar lista de medicamentos\n\n");
     mostrarMedicamentos(listaMedicamentos, MED);
-    printf("\n***************************************************\n");
+    printf("\n\n***************************************************\n\n");
+/*
     // Clientes con descripción del medicamento
+    printf("\n \t Mostrar clientes con su medicamento \n\n");
     mostrarClientes(listaClientes, CLI, listaMedicamentos, MED);
+    MostrarClientesConMedicamento(listaClientes, CLI, listaMedicamentos, MED, -1);
+    printf("\n\n***************************************************\n\n");
 
     // Clientes que compraron ibuprofeno
+    printf("\n \t Mostrar clientes por medicamento (ibu)\n\n");
+    eMedicamento medicamento = traerMedicamentoPorDescripcion(listaMedicamentos, MED, "Ibuprofeno");
+    mostrarClientesPorMedicamento(listaClientes, CLI, medicamento);
+    printf("\n\n***************************************************\n\n");
 
     // Cada medicamento y los clientes que lo compraron
+    printf("\n \t Cada medicamento y los clientes que lo compraron \n\n");
+    mostrarClientesPorCadaMedicamento(listaClientes, CLI, listaMedicamentos, MED);
+    printf("\n\n***************************************************\n\n");
 
     // stock disponible para el medicamento ingresado por el usuario
+    printf("\n \t Stock disponible para el medicamento ingresado por el usuario \n\n");
+    char descMed[50];
+    eMedicamento medicamento;
+    do
+    {
+        int flag = getString(descMed, "Ingrese medicamento: ", "Error en el ingreso.", 1, 50);
+    } while(flag ==1)
+    medicamento=traerMedicamentoPorDescripcion(listaMedicamentos, MED, descMed);
+
+    if (medicamento.idMedicamento>=0)
+    {
+        mostrarStockPorMedicamento(listaMedicamentos, MED, medicamento);
+    }
+    */
+    printf("\n\n***************************************************\n\n");
 
     // total de ventas en $
+    printf("\n \t total de ventas en $ \n\n");
+    float totVentas = totalVentas(listaClientes, CLI, listaMedicamentos, MED);
+    printf("\n El total de ventas es %.2f \n", totVentas);
+    printf("\n\n***************************************************\n\n");
 
     // el o los medicamentos mas vendidos.
+    printf("\n \t Medicamentos con mayor venta \n\n");
 
-
+    printf("\n\n***************************************************\n\n");
 
     return 0;
 }
@@ -90,9 +129,9 @@ void inicializarLaboratorios(eLaboratorio laboratorios[], int sizeLab)
     for(i=0; i<sizeLab; i++)
     {
         laboratorios[i].idLaboratorio=id[i];
-        strcpy(laboratorios[i].razonSocial, razon);
-        strcpy(laboratorios[i].direccion, direccion);
-        strcpy(laboratorios[i].telefono, telefono);
+        strcpy(laboratorios[i].razonSocial, razon[i]);
+        strcpy(laboratorios[i].direccion, direccion[i]);
+        strcpy(laboratorios[i].telefono, telefono[i]);
     }
 }
 
@@ -166,17 +205,113 @@ void mostrarClientes(eCliente clientes[], int sizeCli, eMedicamento medicamentos
 
 eMedicamento traerMedicamentoPorId (eMedicamento lista[], int tam, int id)
 {
-    eMedicamento med ={};
+    eMedicamento medicamento = {-1, "", 0, 0,0,{},{}};
     int i;
 
     for (i=0; i<tam; i++)
     {
         if (lista[i].idMedicamento == id)
         {
-            med=lista[i];
-
+            medicamento=lista[i];
         }
     }
-    return med;
+    return medicamento;
 }
 
+eMedicamento traerMedicamentoPorDescripcion (eMedicamento listaMedicamentos[], int sizeMed, char descripcion []) // validar str descripcon
+{
+    eMedicamento medicamento = {-1, "", 0, 0,0,{},{}};
+
+    int indiceMed;
+
+    for (indiceMed = 0; indiceMed<sizeMed; indiceMed++)
+    {
+        if (strcmp(listaMedicamentos[indiceMed].descripcion, descripcion)==0)
+        {
+            medicamento = listaMedicamentos[indiceMed];
+            break;
+        }
+    }
+
+    return medicamento;
+}
+
+// idCli =-1 todos;
+void MostrarClientesConMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed, int idCli)
+{
+    int indiceCli;
+    int indiceMed;
+
+    for (indiceCli = 0; indiceCli <sizeCli; indiceCli++)
+    {
+        if(idCli==-1)// muestro todos
+        {
+            for(indiceMed = 0; indiceMed<sizeMed; indiceMed++)
+            {
+                if(listaClientes[indiceCli].idMedicamento == listaMedicamentos[indiceMed].idMedicamento)
+                {
+                    printf(" %s \t %s \n", listaClientes[indiceCli].nombre, listaMedicamentos[indiceMed].descripcion);
+                }
+            }
+        }
+    }
+}
+
+void mostrarClientesPorMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento medicamento)
+{
+    int indiceCli;
+
+    printf("\n \t Clientes que compraron el medicamento %s \n\n", medicamento.descripcion);
+
+    for (indiceCli = 0; indiceCli<sizeCli; indiceCli++)
+    {
+        if (listaClientes[indiceCli].idMedicamento == medicamento.idMedicamento)
+        {
+            printf(" %s\n", listaClientes[indiceCli].nombre);
+        }
+    }
+}
+
+void mostrarClientesPorCadaMedicamento (eCliente listaClientes[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed)
+{
+    int indiceMed;
+
+    for(indiceMed=0; indiceMed<sizeMed; indiceMed++)
+    {
+        mostrarClientesPorMedicamento(listaClientes, sizeCli, listaMedicamentos[indiceMed]);
+    }
+}
+
+void mostrarStockPorMedicamento(eMedicamento listaMedicamentos[], int sizeMed, eMedicamento medicamento)
+{
+    int indiceMed;
+
+    for(indiceMed = 0; indiceMed<sizeMed; indiceMed++)
+    {
+        if (listaMedicamentos[indiceMed].idMedicamento == medicamento.idMedicamento)
+        {
+            printf("Stock de %s: %d \n", listaMedicamentos[indiceMed].descripcion, listaMedicamentos[indiceMed].stock);
+            break;
+        }
+    }
+}
+
+float totalVentas (eCliente listaCliente[], int sizeCli, eMedicamento listaMedicamentos[], int sizeMed)
+{
+    int indiceCli;
+    float totalVentas=0;
+    eMedicamento medicamento = {-1, "", 0, 0,0,{},{}};
+
+    for(indiceCli = 0; indiceCli<sizeCli; indiceCli++)
+    {
+        medicamento = traerMedicamentoPorId(listaMedicamentos, sizeMed, listaCliente[indiceCli].idMedicamento);
+        totalVentas += medicamento.precio;
+    }
+
+    return totalVentas;
+}
+
+void mostrarMedicamentosMasVendidos (eMedicamento listaMedicamentos[], eCliente listaClientes[], int sizeMed, int sizeCli)
+{
+
+}
