@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1507216333 source:c:\users\alumno\desktop\morales.federico\funcionesexamen.c
+	"funcionesExamen.h"
+
+1507216299 c:\users\alumno\desktop\morales.federico\funcionesexamen.h
+	<string.h>
+
+1507205401 source:c:\users\alumno\desktop\morales.federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507205477 source:c:\users\alumno\desktop\morales.federico\strfunc.c
+
+1507216126 source:c:\users\alumno\desktop\morales.federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesExamen.h"
+	"input.h"
+
+1507205404 c:\users\alumno\desktop\morales.federico\input.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
