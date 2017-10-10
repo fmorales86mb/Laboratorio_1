@@ -27,3 +27,32 @@
 	<conio.h>
 	<ctype.h>
 
+1507599664 source:d:\desarrollo\utn\laboratorio_1\morales.federico\funcionesexamen.c
+	"funcionesExamen.h"
+	"input.h"
+
+1507604171 d:\desarrollo\utn\laboratorio_1\morales.federico\funcionesexamen.h
+	<string.h>
+
+1507590392 source:d:\desarrollo\utn\laboratorio_1\morales.federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507603577 source:d:\desarrollo\utn\laboratorio_1\morales.federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesExamen.h"
+	"input.h"
+
+1507588859 d:\desarrollo\utn\laboratorio_1\morales.federico\input.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507588859 source:d:\desarrollo\utn\laboratorio_1\morales.federico\strfunc.c
+

@@ -1,5 +1,25 @@
 #include "funcionesExamen.h"
+#include "input.h"
 #define STR 50
+
+
+
+void harcodearUsuario (eUsuario lista[])
+{
+    int id[5]={1,2,3,4,5};
+    int estado[5]={0,0,0,0,0};
+    char nombre[][STR]={"nom1", "nom2","nom3","nom4","nom5"};
+    char pass[][STR]={"pnom1", "pnom2","pnom3","pnom4","pnom5"};
+
+    int i;
+    for (i=0; i<5; i++)
+    {
+        lista[i].id=id[i];
+        lista[i].estado = estado[i];
+        strcpy(lista[i].nombre, nombre[i]);
+        strcpy(lista[i].pass, pass[i]);
+    }
+}
 
 int indiceUsLibre (eUsuario listaUs[], int size)
 {
@@ -24,6 +44,8 @@ void iniListaUs (eUsuario lista[], int size)
     {
         lista[i].estado = -1;
         lista[i].id=0;
+        strcpy(lista[i].nombre, " ");
+        strcpy(lista[i].pass, " ");
     }
 }
 
@@ -51,12 +73,29 @@ void altaUsuario (eUsuario listaUs[], int sizeUs)
     int indiceLibre;
     eUsuario usuario;
     int id;
+    int i;
+    int yaExiste = 0;
 
     indiceLibre = indiceUsLibre(listaUs, sizeUs);
     id = buscarIdUsuariolibre(listaUs, sizeUs);
 
     usuario = cargarUsuario(id);
-    listaUs[indiceLibre] = usuario;
+
+    for(i=0; i<sizeUs; i++)
+    {
+        if(listaUs[i].estado==0 && strcmp(listaUs[i].nombre, usuario.nombre)==0 && strcmp(listaUs[i].pass, usuario.pass)==0)
+        {
+            printf("Este usuario ya existe.");
+            yaExiste = 1;
+            break;
+        }
+    }
+
+    if (yaExiste == 0)
+    {
+        listaUs[indiceLibre] = usuario;
+    }
+
 }
 
 eUsuario cargarUsuario (int id)
@@ -83,6 +122,126 @@ eUsuario cargarUsuario (int id)
 
     return usuario;
 }
+
+eUsuario buscarUsuarioPorId (eUsuario lista[], int size, int id, int estado)
+{
+    eUsuario usuario ={0,-1,"",""};
+    int i;
+
+    for (i=0;i<size;i++)
+    {
+        if(lista[i].estado==estado && lista[i].id==id)
+        {
+            usuario=lista[i];
+            break;
+        }
+    }
+
+    return usuario;
+}
+
+void mostrarUsuarios (eUsuario lista[], int size)
+{
+    int i;
+
+    printf("IdUs\t Nombre\t pass\t estado\n\n");
+
+    for(i=0; i<size; i++)
+    {
+
+        printf("%d \t %s \t %s \t %d \n",lista[i].id, lista[i].nombre, lista[i].pass, lista[i].estado);
+    }
+}
+
+int pedirIdUsuario (eUsuario lista[], int size)
+{
+    int flag;
+    char nombre[STR];
+    char pas[STR];
+    int idUs=-1;
+
+    do
+    {
+        flag = getString(nombre, "Ingrese Nombre usuario: ", "Nombre invalido.", 1, STR);
+    }while(flag==-1);
+
+    do
+    {
+        flag = getString(pas, "Ingrese Password: ", "Password invalido.", 1, STR);
+    }while(flag==-1);
+
+    idUs = buscarUsuario1(nombre, pas, lista, size);
+
+    return idUs;
+}
+
+int buscarUsuario1(char nombre[], char pass[], eUsuario lista[], int size )
+{
+    int i;
+    int id=-1;
+
+    for (i=0; i<size; i++)
+    {
+        if (strcmp(lista[i].nombre, nombre)==0)
+        {
+            if (strcmp(lista[i].pass, pass)==0)
+            {
+                id=lista[i].id;
+                break;
+            }
+        }
+    }
+
+    return id;
+}
+
+void modificarUsuario (eUsuario listaUs[], int sizeUs)
+{
+    int idUs;
+    char nombre[STR];
+    char pas[STR];
+    int flag;
+    int i;
+
+    do
+    {
+        idUs = pedirIdUsuario(listaUs, sizeUs);
+    }while(idUs == -1);
+
+    do
+    {
+        do
+        {
+            flag = getString(nombre, "Ingrese nuevo Nombre del usuario: ", "Nombre invalido.", 1, STR);
+        }while(flag==-1);
+
+        do
+        {
+            flag = getString(pas, "Ingrese nuevo Password: ", "Password invalido.", 1, STR);
+        }while(flag==-1);
+
+        flag=buscarUsuario1(nombre, pas, listaUs, sizeUs);
+        if (flag!=-1)
+        {
+            printf("\n Los datos ya existen en otro usuario.\n");
+        }
+
+    } while(flag!=-1);
+
+    for(i=0;i<sizeUs;i++)
+    {
+        if (listaUs[i].estado == 0 && listaUs[i].id==idUs)
+        {
+            strcpy(listaUs[i].nombre, nombre);
+            strcpy(listaUs[i].pass, pas);
+        }
+    }
+
+}
+
+
+
+
 
 void iniListaPR(eProducto lista[], int size)
 {
@@ -177,7 +336,6 @@ void altaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int size
     int indiceLibre;
     eProducto producto;
     int id;
-    int flag;
     int idUs;
 
     do
@@ -192,66 +350,7 @@ void altaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int size
     listaPr[indiceLibre] = producto;
 }
 
-int pedirIdUsuario (eUsuario lista[], int size)
-{
-    int flag;
-    char nombre[STR];
-    char pas[STR];
-    int idUs=-1;
-
-    do
-    {
-        flag = getString(nombre, "Ingrese Nombre usuario: ", "Nombre invalido.", 1, STR);
-    }while(flag==-1);
-
-    do
-    {
-        flag = getString(pas, "Ingrese Password: ", "Password invalido.", 1, STR);
-    }while(flag==-1);
-
-    idUs = buscarUsuario1(nombre, pas, lista, size);
-
-    return idUs;
-}
-
-int buscarUsuario1(char nombre[], char pass[], eUsuario lista[], int size )
-{
-    int i;
-    int id=-1;
-
-    for (i=0; i<size; i++)
-    {
-        if (strcmp(lista[i].nombre, nombre)==0)
-        {
-            if (strcmp(lista[i].pass, pass)==0)
-            {
-                id=lista[i].id;
-                break;
-            }
-        }
-    }
-
-    return id;
-}
-
-void harcodearUsuario (eUsuario lista[], int size)
-{
-    int id[5]={1,2,3,4,5};
-    int estado[5]={0,0,0,0,0};
-    char nombre[][STR]={"nom1", "nom2","nom3","nom4","nom5"};
-    char pass[][STR]={"pnom1", "pnom2","pnom3","pnom4","pnom5"};
-
-    int i;
-    for (i=0; i<size; i++)
-    {
-        lista[i].id=id[i];
-        lista[i].estado = estado[i];
-        strcpy(lista[i].nombre, nombre[i]);
-        strcpy(lista[i].pass, pass[i]);
-    }
-}
-
-void harcodearProducto (eProducto lista[], int size)
+void harcodearProducto (eProducto lista[])
 {
     int id[5]={1,2,3,4,5};
     int estado[5]={0,0,0,0,0};
@@ -263,7 +362,7 @@ void harcodearProducto (eProducto lista[], int size)
     int ventas[5]={1,2,3,4,6};
 
     int i;
-    for (i=0; i<size; i++)
+    for (i=0; i<5; i++)
     {
         lista[i].id=id[i];
         lista[i].estado = estado[i];
@@ -281,9 +380,11 @@ void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, 
     int indP;
     char nomUs[STR];
 
+    printf("\n id \t nombre \t precio  ventas  stock  usuario \n");
+
     for(indP=0; indP<sizePr; indP++)
     {
-        if (listaPr[i].estado==0)
+        if (listaPr[indP].estado==0)
         {
             for(i=0; i<sizeUs; i++)
             {
@@ -305,29 +406,92 @@ void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, 
     }
 }
 
-
-
-
-
-/*
-void strToInt (char mje[], char emje[])
+void mostrarProductos(eProducto lista[], int size)
 {
-    int salida = -1;
-	char dato[2000];
-    int soloNum;
-    int entreVal;
-    int numero;
+    int i;
 
-    printf("\n%s", message);
-    fflush( stdin );
-    gets(dato);
-    soloNum = soloNumeros(dato)
+    printf("IdPr\t idUS\t Nombre\t precio\t ventas\t stock\t estado\n\n");
 
-    if (soloNum==0)
+    for(i=0; i<size; i++)
     {
-        numero = aito(dato;)
 
-    {
+        printf("%d \t %d \t %s \t %d \t %d \t %d \t %d\n",lista[i].id, lista[i].idUsuario, lista[i].nombre, lista[i].precio, lista[i].ventas, lista[i].stock, lista[i].estado);
+    }
+
 }
-*/
+
+void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs, int sizeUs, eVenta listaVe[], int sizeVe)
+{
+    int flag;
+    int id;
+    int i;
+    int calificacion;
+    int idmax= buscarIdProductolibre(listaPr, sizeUs);
+    int indVenta;
+    int idUs;
+
+    do
+    {
+        flag=getInt(&id, "Ingrese Id del producto a comprar: ", "Id invalido.", 1, idmax);
+    }while(flag==-1);
+
+    for(i=0; i<sizePr; i++)
+    {
+        if(listaPr[i].estado==0 && listaPr[i].id==id)
+        {
+            if(listaPr[i].stock>0)
+            {
+                idUs=listaPr[i].idUsuario;
+                listaPr[i].stock--;
+                listaPr[i].ventas++;
+                flag=-1;
+                break;
+            }
+        }
+    }
+
+    if(flag==-1)
+    {
+        printf("Compra realizada.\n");
+        do
+        {
+            flag=getInt(&calificacion, "Ingrese calificacion (de 0 a 10): ", "Calificacion invalida.", 0, 10);
+        }while(flag==-1);
+
+        indVenta=indiceLibreVenta(listaVe, sizeVe);
+        if (indVenta >-1)
+        {
+            listaVe[indVenta].calificacion=calificacion;
+            listaVe[indVenta].idProducto=id;
+            listaVe[indVenta].idUsuario=idUs;
+        }
+    }
+
+}
+
+int indiceLibreVenta (eVenta lista[], int size)
+{
+    int i;
+    int indice = -1;
+    for(i=0;i<size;i++)
+    {
+        if(lista[i].calificacion==-1)
+        {
+            indice = i;
+            break;
+        }
+    }
+
+    return  indice;
+}
+
+void iniVentas (eVenta lista[], int size)
+{
+    int i;
+    for(i=0; i<size;i++)
+    {
+        lista[i].calificacion=-1;
+    }
+}
+
 

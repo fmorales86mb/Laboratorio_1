@@ -3,9 +3,10 @@
 #include "funcionesExamen.h"
 #include "input.h"
 
-#define US 100
+#define US 10
 #define STR 50
-#define PR 100
+#define PR 20
+#define VE 200
 
 int main()
 {
@@ -15,22 +16,31 @@ int main()
 
     eUsuario listaUsuario[US];
     iniListaUs(listaUsuario, US);
-    harcodearUsuario(listaUsuario, US);
+    harcodearUsuario(listaUsuario);
 
     eProducto listaProducto[PR];
     iniListaPR(listaProducto, PR);
-    harcodearProducto(listaProducto, PR);
+    harcodearProducto(listaProducto);
+
+    eVenta listaVenta[VE];
 
     do
     {
         system("cls");
         printf("\n1) ALTA DE USUARIO.\n");
-        printf("\n2) PUBLICAR PRODUCTO.\n");
-        printf("\n3) LISTAR PUBLICACIONES.\n");
+        printf("\n2) MODIFICAR DATOS DEL USUARIO.\n");
+        printf("\n3) .\n");
+        printf("\n4) PUBLICAR PRODUCTO.\n");
+        printf("\n5) .\n");
+        printf("\n6) .\n");
+        printf("\n7) .COMPRAR PRODUCTO\n");
+        printf("\n8) .\n");
+        printf("\n9) LISTAR PUBLICACIONES.\n");
+        printf("\n10) .\n");
 
         do
         {
-            flag = getInt(&opcion, "Elija una opcion: ", "Opcion erronea.", 1, 3);
+            flag = getInt(&opcion, "Elija una opcion: ", "Opcion erronea.", 1, 10);
         }while (flag ==-1);
 
         switch(opcion)
@@ -38,14 +48,28 @@ int main()
             case 1:
                 system("cls");
                 altaUsuario(listaUsuario, US);
-                //printf("\n %d, %d, %s, %s ", listaUsuario[0].id, listaUsuario[0].estado, listaUsuario[0].nombre, listaUsuario[0].pass);
+                mostrarUsuarios(listaUsuario, US);
                 system("pause");
                 break;
             case 2:
                 system("cls");
-                altaProducto(listaProducto, PR,listaUsuario, US);
+                mostrarUsuarios(listaUsuario, US);
+                modificarUsuario(listaUsuario, US);
+                system("pause");
                 break;
-            case 3:
+            case 4:
+                system("cls");
+                altaProducto(listaProducto, PR,listaUsuario, US);
+                mostrarProductos(listaProducto);
+                system("pause");
+                break;
+            case 7:
+                system("cls");
+                mostrarProductos(listaProducto);
+
+                system("pause");
+                break;
+            case 9:
                 system("cls");
                 listarPublicaciones(listaProducto, listaUsuario, PR, US);
                 system("pause");

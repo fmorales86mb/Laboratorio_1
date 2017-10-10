@@ -24,27 +24,35 @@ typedef struct
     int ventas;
 }eProducto;
 
-void harcodearUsuario (eUsuario lista[], int size);
-void harcodearProducto (eProducto lista[], int size);
+typedef struct
+{
+    int idProducto;
+    int idUsuario;
+    int calificacion;
+}eVenta;
 
-
+void harcodearUsuario (eUsuario lista[]);
+void mostrarUsuarios (eUsuario lista[], int size);
 void iniListaUs (eUsuario lista[], int size);
-void iniListaPR(eProducto lista[], int size);
-
 int indiceUsLibre (eUsuario listaUs[], int size);
-int indicePrLibre (eProducto lista[], int size);
-
 int buscarIdUsuariolibre (eUsuario lista[], int size);
-int buscarIdProductolibre (eProducto lista[], int size);
 int buscarUsuario1(char nombre[], char pass[], eUsuario lista[], int size );
-
 eUsuario cargarUsuario (int id);
-eProducto cargarProducto (int id, int idUs);
-
 void altaUsuario (eUsuario listaUs[], int sizeUs);
-void altaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs );
+eUsuario buscarUsuarioPorId (eUsuario lista[], int size, int id, int estado);
+void modificarUsuario (eUsuario listaUs[], int sizeUs);
 
+void harcodearProducto (eProducto lista[]);
+void iniListaPR(eProducto lista[], int size);
+int indicePrLibre (eProducto lista[], int size);
+int buscarIdProductolibre (eProducto lista[], int size);
+eProducto cargarProducto (int id, int idUs);
+void altaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs );
 void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, int sizeUs);
+void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs, int sizeUs, eVenta listaVe[], int sizeVe);
+
+void iniVentas (eVenta lista[], int size);
+int indiceLibreVenta (eVenta lista[], int size);
 
 
 #endif // FUNCIONESEXAMEN_H_INCLUDED
