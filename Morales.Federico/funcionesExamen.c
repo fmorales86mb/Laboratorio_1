@@ -288,7 +288,7 @@ void listarUsuarios (eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeV
     int acumulador;
     int contador;
 
-    printf("Nombre Us   Promedio Calificacion\n");
+    printf("NombreUs\t Promedio Calificacion\n");
 
     for(indU=0; indU<sizeUs; indU++)
     {
@@ -312,7 +312,7 @@ void listarUsuarios (eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeV
                 media = (float)acumulador/contador;
             }
 
-            printf("  %s                   %.2f  \n", listaUs[indU].nombre, media);
+            printf(" %s \t %.2f\n", listaUs[indU].nombre, media);
         }
     }
 }
@@ -457,7 +457,7 @@ void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, 
     int indP;
     char nomUs[STR];
 
-    printf("\n id \t nombre \t precio  ventas  stock  usuario \n");
+    printf("\n id\t nombre\t precio\t ventas\t stock\t usuario \n");
 
     for(indP=0; indP<sizePr; indP++)
     {
@@ -566,12 +566,12 @@ void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int
         idUs = pedirIdUsuario(listaUs, sizeUs);
     }while(idUs == -1);
 
-    printf("Id  NombrePr  Precio  Ventas  Stock\n\n");
+    printf(" Id\t NombrePr\t Precio\t Ventas\t Stock\n\n");
     for(i=0;i<sizePr;i++)
     {
         if(listaPr[i].idUsuario==idUs)
         {
-            printf("%d    %s        %d      %d      %d \n", listaPr[i].id,
+            printf("%d\t %s\t %d\t %d\t %d\n", listaPr[i].id,
                    listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
         }
     }
@@ -636,12 +636,12 @@ void bajaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int size
         idUs = pedirIdUsuario(listaUs, sizeUs);
     }while(idUs == -1);
 
-    printf("Id  NombrePr  Precio  Ventas  Stock\n\n");
+    printf(" Id\t NombrePr\t Precio\t Ventas\t Stock\n\n");
     for(i=0;i<sizePr;i++)
     {
         if(listaPr[i].idUsuario==idUs && listaPr[i].estado==0)
         {
-            printf("%d    %s        %d      %d      %d \n", listaPr[i].id,
+            printf("%d\t %s\t %d\t %d\t %d\n", listaPr[i].id,
                    listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
         }
     }
@@ -677,12 +677,12 @@ void productosPorUsuario (eProducto lista[], int size, int idUs)
 {
     int i;
 
-    printf("idPr   NombrePr   Precio  Ventas  Stock\n");
+    printf("idPr\t NombrePr\t Precio\t Ventas\t Stock\n");
     for (i=0; i<size; i++)
     {
         if(lista[i].idUsuario == idUs && lista[i].estado == 0)
         {
-            printf(" %d      %s         %d      %d      %d\n", lista[i].id, lista[i].nombre,
+            printf(" %d\t %s\t %d\t %d\t %d\n", lista[i].id, lista[i].nombre,
                    lista[i].precio, lista[i].ventas, lista[i].stock);
         }
     }
@@ -691,6 +691,8 @@ void productosPorUsuario (eProducto lista[], int size, int idUs)
 void listarPublicacionesPorUsuario (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs)
 {
     int idUs;
+    //int i;
+    //int existeUs=-1;
 
     do
     {
@@ -698,6 +700,7 @@ void listarPublicacionesPorUsuario (eProducto listaPr[], int sizePr, eUsuario li
     }while(idUs == -1);
 
     productosPorUsuario(listaPr, sizePr, idUs);
+
 }
 
 
@@ -749,12 +752,12 @@ void mostrarVentas(eVenta lista[], int size)
 {
     int i;
 
-    printf(" idUs \t idPr \t calif\n\n");
+    printf(" idUs\t idPr\t calif\n\n");
     for (i=0; i<size; i++)
     {
         if(lista[i].calificacion>-1)
         {
-            printf(" %d \t %d \t %d \n",lista[i].idUsuario, lista[i].idProducto, lista[i].calificacion);
+            printf(" %d\t %d\t %d\n",lista[i].idUsuario, lista[i].idProducto, lista[i].calificacion);
         }
 
     }
