@@ -41,6 +41,8 @@ eUsuario cargarUsuario (int id);
 void altaUsuario (eUsuario listaUs[], int sizeUs);
 eUsuario buscarUsuarioPorId (eUsuario lista[], int size, int id, int estado);
 void modificarUsuario (eUsuario listaUs[], int sizeUs);
+void bajaUsuario (eUsuario listaUs[], int sizeUs, eProducto listaPr[], int sizePr);
+void listarUsuarios (eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeVe);
 
 void harcodearProducto (eProducto lista[]);
 void iniListaPR(eProducto lista[], int size);
@@ -49,10 +51,17 @@ int buscarIdProductolibre (eProducto lista[], int size);
 eProducto cargarProducto (int id, int idUs);
 void altaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs );
 void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, int sizeUs);
-void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs, int sizeUs, eVenta listaVe[], int sizeVe);
+void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeVe);
+void mostrarProductos(eProducto lista[], int size);
+void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs);
+void bajaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs);
+void productosPorUsuario (eProducto lista[], int size, int idUs);
+void listarPublicacionesPorUsuario (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs);
 
 void iniVentas (eVenta lista[], int size);
 int indiceLibreVenta (eVenta lista[], int size);
+void harcodearVenta (eVenta lista[]);
+void mostrarVentas(eVenta lista[], int size);
 
 
 #endif // FUNCIONESEXAMEN_H_INCLUDED

@@ -23,20 +23,22 @@ int main()
     harcodearProducto(listaProducto);
 
     eVenta listaVenta[VE];
+    iniVentas(listaVenta, VE);
+    harcodearVenta(listaVenta);
 
     do
     {
         system("cls");
         printf("\n1) ALTA DE USUARIO.\n");
         printf("\n2) MODIFICAR DATOS DEL USUARIO.\n");
-        printf("\n3) .\n");
+        printf("\n3) BAJA DEL USUARIO.\n");
         printf("\n4) PUBLICAR PRODUCTO.\n");
-        printf("\n5) .\n");
-        printf("\n6) .\n");
-        printf("\n7) .COMPRAR PRODUCTO\n");
-        printf("\n8) .\n");
+        printf("\n5) MODIFICAR PUBLICACION.\n");
+        printf("\n6) BAJA PUBLICACION.\n");
+        printf("\n7) COMPRAR PRODUCTO.\n");
+        printf("\n8) LISTAR PUBLICACIONES DE USUARIO.\n");
         printf("\n9) LISTAR PUBLICACIONES.\n");
-        printf("\n10) .\n");
+        printf("\n10) LISTAR USUARIOS.\n");
 
         do
         {
@@ -57,21 +59,50 @@ int main()
                 modificarUsuario(listaUsuario, US);
                 system("pause");
                 break;
+            case 3:
+                system("cls");
+                mostrarUsuarios(listaUsuario, US);
+                bajaUsuario(listaUsuario, US, listaProducto, PR);
+                system("pause");
+                break;
             case 4:
                 system("cls");
                 altaProducto(listaProducto, PR,listaUsuario, US);
-                mostrarProductos(listaProducto);
+                mostrarProductos(listaProducto, PR);
+                system("pause");
+                break;
+            case 5:
+                system("cls");
+                modificarProducto(listaProducto, PR, listaUsuario, US);
+                mostrarProductos(listaProducto, PR);
+                system("pause");
+                break;
+            case 6:
+                system("cls");
+                bajaProducto(listaProducto, PR, listaUsuario, US);
+                mostrarProductos(listaProducto, PR);
                 system("pause");
                 break;
             case 7:
                 system("cls");
-                mostrarProductos(listaProducto);
-
+                mostrarProductos(listaProducto, PR);
+                comprarProducto(listaProducto, PR, listaUsuario, US, listaVenta, VE);
+                mostrarVentas(listaVenta, VE);
+                system("pause");
+                break;
+            case 8:
+                system("cls");
+                listarPublicacionesPorUsuario(listaProducto, PR, listaUsuario, US);
                 system("pause");
                 break;
             case 9:
                 system("cls");
                 listarPublicaciones(listaProducto, listaUsuario, PR, US);
+                system("pause");
+                break;
+            case 10:
+                system("cls");
+                listarUsuarios(listaUsuario, US, listaVenta, VE);
                 system("pause");
                 break;
         }

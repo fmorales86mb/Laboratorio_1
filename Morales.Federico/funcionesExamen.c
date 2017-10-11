@@ -3,7 +3,7 @@
 #define STR 50
 
 
-
+// USUARIOS
 void harcodearUsuario (eUsuario lista[])
 {
     int id[5]={1,2,3,4,5};
@@ -148,8 +148,12 @@ void mostrarUsuarios (eUsuario lista[], int size)
 
     for(i=0; i<size; i++)
     {
+        if (lista[i].estado!=-1)
+        {
+            printf("%d \t %s \t %s \t %d \n",lista[i].id,
+                   lista[i].nombre, lista[i].pass, lista[i].estado);
+        }
 
-        printf("%d \t %s \t %s \t %d \n",lista[i].id, lista[i].nombre, lista[i].pass, lista[i].estado);
     }
 }
 
@@ -239,10 +243,83 @@ void modificarUsuario (eUsuario listaUs[], int sizeUs)
 
 }
 
+void bajaUsuario (eUsuario listaUs[], int sizeUs, eProducto listaPr[], int sizePr)
+{
+    int idUs;
+    int i;
+    int usEncontrado = -1;
+
+    do
+    {
+        idUs = pedirIdUsuario(listaUs, sizeUs);
+    } while(idUs==-1);
+
+    for(i=0; i<sizeUs; i++)
+    {
+        if(listaUs[i].id == idUs && listaUs[i].estado==0)
+        {
+            usEncontrado=0;
+            listaUs[i].estado=-1;
+            printf("Usuario Borrado\n");
+            break;
+        }
+    }
+    if (usEncontrado==-1)
+    {
+        printf("Usuario no Encontrado.\n");
+    }
+    else
+    {
+        for(i=0; i<sizePr;i++)
+        {
+            if(listaPr[i].idUsuario==idUs)
+            {
+                listaPr[i].estado=-1;
+            }
+        }
+    }
+}
+
+void listarUsuarios (eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeVe)
+{
+    int indU;
+    int indV;
+    float media;
+    int acumulador;
+    int contador;
+
+    printf("Nombre Us   Promedio Calificacion\n");
+
+    for(indU=0; indU<sizeUs; indU++)
+    {
+        media=0;
+        acumulador=0;
+        contador=0;
+
+        if (listaUs[indU].estado == 0)
+        {
+            for(indV=0; indV<sizeVe; indV++)
+            {
+                if(listaVe[indV].idUsuario == listaUs[indU].id)
+                {
+                    acumulador += listaVe[indV].calificacion;
+                    contador++;
+                }
+            }
+
+            if (contador>0)
+            {
+                media = (float)acumulador/contador;
+            }
+
+            printf("  %s                   %.2f  \n", listaUs[indU].nombre, media);
+        }
+    }
+}
 
 
 
-
+//PRODUCTOS
 void iniListaPR(eProducto lista[], int size)
 {
     int i;
@@ -414,13 +491,18 @@ void mostrarProductos(eProducto lista[], int size)
 
     for(i=0; i<size; i++)
     {
+        if (lista[i].estado!=-1)
+        {
+                printf("%d \t %d \t %s \t %d \t %d \t %d \t %d\n",
+                       lista[i].id, lista[i].idUsuario, lista[i].nombre,
+                       lista[i].precio, lista[i].ventas, lista[i].stock, lista[i].estado);
+        }
 
-        printf("%d \t %d \t %s \t %d \t %d \t %d \t %d\n",lista[i].id, lista[i].idUsuario, lista[i].nombre, lista[i].precio, lista[i].ventas, lista[i].stock, lista[i].estado);
     }
 
 }
 
-void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs, int sizeUs, eVenta listaVe[], int sizeVe)
+void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeVe)
 {
     int flag;
     int id;
@@ -466,7 +548,185 @@ void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs, int siz
             listaVe[indVenta].idUsuario=idUs;
         }
     }
+}
 
+void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs)
+{
+    int idUs;
+    int idPr;
+    char nombre[STR];
+    int precio;
+    int stock;
+    int flag;
+    int idCheck=-1;
+    int i;
+
+    do
+    {
+        idUs = pedirIdUsuario(listaUs, sizeUs);
+    }while(idUs == -1);
+
+    printf("Id  NombrePr  Precio  Ventas  Stock\n\n");
+    for(i=0;i<sizePr;i++)
+    {
+        if(listaPr[i].idUsuario==idUs)
+        {
+            printf("%d    %s        %d      %d      %d \n", listaPr[i].id,
+                   listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
+        }
+    }
+
+    do
+    {
+        flag=getInt(&idPr, "Ingrese id del producto a modificar: ", "Id invalido.", 0, 1000);
+
+        if(flag!=-1)
+        {
+            for(i=0; i<sizePr; i++)
+            {
+                if(listaPr[i].id==idPr && listaPr[i].estado==0 && listaPr[i].idUsuario==idUs)
+                {
+                    idCheck=0;
+                    break;
+                }
+            }
+
+        }
+
+    }while(flag==-1 || idCheck!=0);
+
+
+
+    do
+    {
+        flag=getString(nombre, "Ingrese nuevo nombre del producto: ", "Nombre invalido", 1, STR);
+    }while(flag==-1);
+
+    do
+    {
+        flag=getInt(&precio, "Ingrese nuevo precio del producto: ", "Precio invalido.", 0, 1000);
+    }while(flag==-1);
+
+    do
+    {
+        flag=getInt(&stock, "Ingrese nuevo stock del producto: ", "stock invalido.", 0, 1000);
+    }while(flag==-1);
+
+    for(i=0; i<sizePr; i++)
+    {
+        if(listaPr[i].id==idPr && listaPr[i].estado==0)
+        {
+            listaPr[i].precio=precio;
+            listaPr[i].stock = stock;
+            strcpy(listaPr[i].nombre, nombre);
+        }
+    }
+}
+
+void bajaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs)
+{
+    int idUs;
+    int idPr;
+    int flag;
+    int idCheck=-1;
+    int i;
+
+    do
+    {
+        idUs = pedirIdUsuario(listaUs, sizeUs);
+    }while(idUs == -1);
+
+    printf("Id  NombrePr  Precio  Ventas  Stock\n\n");
+    for(i=0;i<sizePr;i++)
+    {
+        if(listaPr[i].idUsuario==idUs && listaPr[i].estado==0)
+        {
+            printf("%d    %s        %d      %d      %d \n", listaPr[i].id,
+                   listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
+        }
+    }
+
+    do
+    {
+        flag=getInt(&idPr, "Ingrese id del producto a dar de baja: ", "Id invalido.", 0, 1000);
+
+        if(flag!=-1)
+        {
+            for(i=0; i<sizePr; i++)
+            {
+                if(listaPr[i].id==idPr && listaPr[i].estado==0 && listaPr[i].idUsuario==idUs)
+                {
+                    idCheck=0;
+                    listaPr[i].estado=-1;
+                    printf("El Producto %s  fue cancelado.\n", listaPr[i].nombre);
+                    break;
+                }
+            }
+
+        }
+
+    }while(flag==-1);
+
+    if (idCheck==-1)
+    {
+        printf("Producto no encontrado.\n");
+    }
+}
+
+void productosPorUsuario (eProducto lista[], int size, int idUs)
+{
+    int i;
+
+    printf("idPr   NombrePr   Precio  Ventas  Stock\n");
+    for (i=0; i<size; i++)
+    {
+        if(lista[i].idUsuario == idUs && lista[i].estado == 0)
+        {
+            printf(" %d      %s         %d      %d      %d\n", lista[i].id, lista[i].nombre,
+                   lista[i].precio, lista[i].ventas, lista[i].stock);
+        }
+    }
+}
+
+void listarPublicacionesPorUsuario (eProducto listaPr[], int sizePr, eUsuario listaUs[], int sizeUs)
+{
+    int idUs;
+
+    do
+    {
+        idUs = pedirIdUsuario(listaUs, sizeUs);
+    }while(idUs == -1);
+
+    productosPorUsuario(listaPr, sizePr, idUs);
+}
+
+
+
+// VETNAS
+void iniVentas (eVenta lista[], int size)
+{
+    int i;
+    for(i=0; i<size;i++)
+    {
+        lista[i].calificacion=-1;
+        lista[i].idProducto=-1;
+        lista[i].idUsuario=-1;
+    }
+}
+
+void harcodearVenta (eVenta lista[])
+{
+    int idP[10]={1,1,3,5,5,2,1,4,3,1};
+    int idU[10]={5,1,2,5,3,5,4,1,2,5};
+    int cal[10]={2,2,1,4,3,0,10,9,8,7};
+
+    int i;
+    for (i=0; i<10; i++)
+    {
+        lista[i].idProducto=idP[i];
+        lista[i].idUsuario = idU[i];
+        lista[i].calificacion = cal[i];
+    }
 }
 
 int indiceLibreVenta (eVenta lista[], int size)
@@ -485,13 +745,20 @@ int indiceLibreVenta (eVenta lista[], int size)
     return  indice;
 }
 
-void iniVentas (eVenta lista[], int size)
+void mostrarVentas(eVenta lista[], int size)
 {
     int i;
-    for(i=0; i<size;i++)
+
+    printf(" idUs \t idPr \t calif\n\n");
+    for (i=0; i<size; i++)
     {
-        lista[i].calificacion=-1;
+        if(lista[i].calificacion>-1)
+        {
+            printf(" %d \t %d \t %d \n",lista[i].idUsuario, lista[i].idProducto, lista[i].calificacion);
+        }
+
     }
 }
+
 
 
