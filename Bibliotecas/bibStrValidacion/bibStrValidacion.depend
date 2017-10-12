@@ -11,3 +11,15 @@
 
 1507844711 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\bibstrvalidacion\bibstrvalidacion.h
 
+1507844850 source:c:\users\fmorales\documents\laboratorio_1\bibliotecas\bibstrvalidacion\main.c
+	<stdio.h>
+	<stdlib.h>
+	"bibStrValidacion.h"
+
+1507845678 c:\users\fmorales\documents\laboratorio_1\bibliotecas\bibstrvalidacion\bibstrvalidacion.h
+
+1507845622 source:c:\users\fmorales\documents\laboratorio_1\bibliotecas\bibstrvalidacion\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
