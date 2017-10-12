@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1507844711 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\bibstrvalidacion\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1507844657 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\bibstrvalidacion\main.c
+	<stdio.h>
+	<stdlib.h>
+	"bibStrValidacion.h"
+
+1507844711 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\clase 7\bibstrvalidacion\bibstrvalidacion.h
+
