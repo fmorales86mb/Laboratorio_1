@@ -18,8 +18,8 @@ typedef struct
     int idUsuario;
     int estado;
     char nombre[50];
-    //float precio;
-    int precio;
+    float precio;
+    //int precio;
     int stock;
     int ventas;
 }eProducto;

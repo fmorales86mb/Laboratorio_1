@@ -1,6 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "funcionesExamen.h"
 #include "input.h"
+#include "bibStrValidacion.h"
+
+#define US 10
 #define STR 50
+#define PR 20
+#define VE 200
 
 
 // USUARIOS
@@ -8,7 +15,7 @@ void harcodearUsuario (eUsuario lista[])
 {
     int id[5]={1,2,3,4,5};
     int estado[5]={0,0,0,0,0};
-    char nombre[][STR]={"nom1", "nom2","nom3","nom4","nom5"};
+    char nombre[][STR]={"noma", "nomb","nomc","nomd","nome"};
     char pass[][STR]={"pnom1", "pnom2","pnom3","pnom4","pnom5"};
 
     int i;
@@ -107,7 +114,7 @@ eUsuario cargarUsuario (int id)
 
     do
     {
-        flag = getString(nombre, "Ingrese Nombre: ", "Nombre invalido.", 1, STR);
+        flag = pedirStrLetras(nombre, "Ingrese Nombre: ", "Nombre invalido.", 1, STR);
     }while(flag==-1);
 
     do
@@ -143,18 +150,20 @@ eUsuario buscarUsuarioPorId (eUsuario lista[], int size, int id, int estado)
 void mostrarUsuarios (eUsuario lista[], int size)
 {
     int i;
+    int contador = 1;
 
-    printf("IdUs\t Nombre\t pass\t estado\n\n");
+    printf("\nLista de usuarios: \n");
 
     for(i=0; i<size; i++)
     {
         if (lista[i].estado!=-1)
         {
-            printf("%d \t %s \t %s \t %d \n",lista[i].id,
-                   lista[i].nombre, lista[i].pass, lista[i].estado);
+            printf(" %d) %s \n", contador, lista[i].nombre);
+            contador++;
         }
 
     }
+    printf("\n");
 }
 
 int pedirIdUsuario (eUsuario lista[], int size)
@@ -166,7 +175,7 @@ int pedirIdUsuario (eUsuario lista[], int size)
 
     do
     {
-        flag = getString(nombre, "Ingrese Nombre usuario: ", "Nombre invalido.", 1, STR);
+        flag = pedirStrLetras(nombre, "Ingrese Nombre usuario: ", "Nombre invalido.", 1, STR);
     }while(flag==-1);
 
     do
@@ -216,7 +225,7 @@ void modificarUsuario (eUsuario listaUs[], int sizeUs)
     {
         do
         {
-            flag = getString(nombre, "Ingrese nuevo Nombre del usuario: ", "Nombre invalido.", 1, STR);
+            flag = pedirStrLetras(nombre, "\nIngrese nuevo Nombre del usuario: ", "Nombre invalido.", 1, STR);
         }while(flag==-1);
 
         do
@@ -375,7 +384,7 @@ eProducto cargarProducto (int id, int idUs)
     int flag;
     char nombre[STR];
     //float precio =0;
-    int precio;
+    float precio;
     int estado=0;
     int stock;
     int ventas = 0;
@@ -388,13 +397,13 @@ eProducto cargarProducto (int id, int idUs)
 
     do
     {
-        flag = getInt(&precio, "Ingrese precio: ", "precio invalido.", 0, 1000);
+        flag = pedirFloat(&precio, "Ingrese precio: ", "precio invalido.", 0, 1000);
         //flag = getFloat(&precio, "Ingrese precio: ", "precio invalido.", 1.0, 1000.0 );
     }while (flag==-1);
 
     do
     {
-        flag = getInt(&stock, "Ingrese stock: ", "stock invalido.", 1, 1000);
+        flag = pedirInt(&stock, "Ingrese stock: ", "stock invalido.", 1, 1000);
     }while (flag==-1);
 
     producto.estado = estado;
@@ -472,7 +481,7 @@ void listarPublicaciones (eProducto listaPr [], eUsuario listaUs [],int sizePr, 
                 }
             }
 
-            printf("\n %d \t %s \t %d \t %d \t %d \t %s \n",
+            printf("\n %d \t %s \t %.2f \t %d \t %d \t %s \n",
                    listaPr[indP].id,
                    listaPr[indP].nombre,
                    listaPr[indP].precio,
@@ -493,7 +502,7 @@ void mostrarProductos(eProducto lista[], int size)
     {
         if (lista[i].estado!=-1)
         {
-                printf("%d \t %d \t %s \t %d \t %d \t %d \t %d\n",
+                printf("%d \t %d \t %s \t %.2f \t %d \t %d \t %d\n",
                        lista[i].id, lista[i].idUsuario, lista[i].nombre,
                        lista[i].precio, lista[i].ventas, lista[i].stock, lista[i].estado);
         }
@@ -514,7 +523,7 @@ void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int s
 
     do
     {
-        flag=getInt(&id, "Ingrese Id del producto a comprar: ", "Id invalido.", 1, idmax);
+        flag=pedirInt(&id, "Ingrese Id del producto a comprar: ", "Id invalido.", 1, idmax);
     }while(flag==-1);
 
     for(i=0; i<sizePr; i++)
@@ -537,7 +546,7 @@ void comprarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int s
         printf("Compra realizada.\n");
         do
         {
-            flag=getInt(&calificacion, "Ingrese calificacion (de 0 a 10): ", "Calificacion invalida.", 0, 10);
+            flag=pedirInt(&calificacion, "Ingrese calificacion (de 0 a 10): ", "Calificacion invalida.", 0, 10);
         }while(flag==-1);
 
         indVenta=indiceLibreVenta(listaVe, sizeVe);
@@ -555,7 +564,7 @@ void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int
     int idUs;
     int idPr;
     char nombre[STR];
-    int precio;
+    float precio;
     int stock;
     int flag;
     int idCheck=-1;
@@ -571,14 +580,14 @@ void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int
     {
         if(listaPr[i].idUsuario==idUs)
         {
-            printf("%d\t %s\t %d\t %d\t %d\n", listaPr[i].id,
+            printf("%d\t %s\t %.2f\t %d\t %d\n", listaPr[i].id,
                    listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
         }
     }
 
     do
     {
-        flag=getInt(&idPr, "Ingrese id del producto a modificar: ", "Id invalido.", 0, 1000);
+        flag=pedirInt(&idPr, "Ingrese id del producto a modificar: ", "Id invalido.", 0, 1000);
 
         if(flag!=-1)
         {
@@ -604,12 +613,12 @@ void modificarProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int
 
     do
     {
-        flag=getInt(&precio, "Ingrese nuevo precio del producto: ", "Precio invalido.", 0, 1000);
+        flag=pedirFloat(&precio, "Ingrese nuevo precio del producto: ", "Precio invalido.", 0, 1000);
     }while(flag==-1);
 
     do
     {
-        flag=getInt(&stock, "Ingrese nuevo stock del producto: ", "stock invalido.", 0, 1000);
+        flag=pedirInt(&stock, "Ingrese nuevo stock del producto: ", "stock invalido.", 0, 1000);
     }while(flag==-1);
 
     for(i=0; i<sizePr; i++)
@@ -641,14 +650,14 @@ void bajaProducto (eProducto listaPr[], int sizePr, eUsuario listaUs[], int size
     {
         if(listaPr[i].idUsuario==idUs && listaPr[i].estado==0)
         {
-            printf("%d\t %s\t %d\t %d\t %d\n", listaPr[i].id,
+            printf("%d\t %s\t %.2f\t %d\t %d\n", listaPr[i].id,
                    listaPr[i].nombre, listaPr[i].precio, listaPr[i].ventas, listaPr[i].stock);
         }
     }
 
     do
     {
-        flag=getInt(&idPr, "Ingrese id del producto a dar de baja: ", "Id invalido.", 0, 1000);
+        flag=pedirInt(&idPr, "Ingrese id del producto a dar de baja: ", "Id invalido.", 0, 1000);
 
         if(flag!=-1)
         {
@@ -682,7 +691,7 @@ void productosPorUsuario (eProducto lista[], int size, int idUs)
     {
         if(lista[i].idUsuario == idUs && lista[i].estado == 0)
         {
-            printf(" %d\t %s\t %d\t %d\t %d\n", lista[i].id, lista[i].nombre,
+            printf(" %d\t %s\t %.2f\t %d\t %d\n", lista[i].id, lista[i].nombre,
                    lista[i].precio, lista[i].ventas, lista[i].stock);
         }
     }

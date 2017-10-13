@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "funcionesExamen.h"
 #include "input.h"
+#include "bibStrValidacion.h"
 
 #define US 10
 #define STR 50

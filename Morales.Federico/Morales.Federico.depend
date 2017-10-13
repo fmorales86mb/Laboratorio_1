@@ -56,32 +56,38 @@
 
 1507588859 source:d:\desarrollo\utn\laboratorio_1\morales.federico\strfunc.c
 
-1507739944 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\funcionesexamen.c
+1507919892 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\funcionesexamen.c
+	<stdio.h>
+	<stdlib.h>
 	"funcionesExamen.h"
 	"input.h"
+	"bibStrValidacion.h"
 
-1507739944 c:\users\fmorales\documents\laboratorio_1\morales.federico\funcionesexamen.h
+1507847317 c:\users\fmorales\documents\laboratorio_1\morales.federico\funcionesexamen.h
 	<string.h>
 
-1507311819 c:\users\fmorales\documents\laboratorio_1\morales.federico\input.h
+1507311818 c:\users\fmorales\documents\laboratorio_1\morales.federico\input.h
+
+1507311818 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
 	<ctype.h>
 
-1507311819 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\input.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<conio.h>
-	<ctype.h>
-
-1507739944 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\main.c
+1507847363 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funcionesExamen.h"
 	"input.h"
+	"bibStrValidacion.h"
 
 1507311819 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\strfunc.c
+
+1507845622 source:c:\users\fmorales\documents\laboratorio_1\morales.federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1507845678 c:\users\fmorales\documents\laboratorio_1\morales.federico\bibstrvalidacion.h
 

@@ -5,8 +5,8 @@
 #include <ctype.h>
 
 /**
-* \brief Solicita un número al usuario y lo chequea
-* \param input Se carga el numero ingresado (es una dirección de memoria).
+* \brief Solicita un nÃºmero al usuario y lo chequea
+* \param input Se carga el numero ingresado (es una direcciÃ³n de memoria).
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
 * \param lowLimit Limite inferior a validar
@@ -38,7 +38,7 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 
 
 /**
-* \brief Solicita un número al usuario y lo chequea
+* \brief Solicita un nÃºmero al usuario y lo chequea
 * \param input Se carga el numero ingresado
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
@@ -109,8 +109,8 @@ int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLi
 * \param input Se carga el string ingresado
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Longitud mínima de la cadena
-* \param hiLimit Longitud máxima de la cadena
+* \param lowLimit Longitud mÃ­nima de la cadena
+* \param hiLimit Longitud mÃ¡xima de la cadena
 * \return Si obtuvo la cadena [0] si no [-1]
 *
 */
