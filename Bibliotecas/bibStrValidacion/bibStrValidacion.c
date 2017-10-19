@@ -7,7 +7,7 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo)
     int retorno=0;
     char strNro[2000];
     int nro;
-    int i = 0;
+    int i = 1;
     int iPrimero;
 
     // ver cantidad de caracteres maximos según los bytes del tipo int.
@@ -27,18 +27,18 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo)
     {
         if ( !(strNro[i]>= '0' && strNro[i]<= '9') && !(i==iPrimero && strNro[i] == '-') )
         {
-            retorno= -1;
+            retorno= 0;
             break;
         }
         i++;
     }
 
-    if (retorno != -1)
+    if (retorno != 0)
     {
         nro = atoi(strNro);
         if (nro>maximo || nro<minimo)
         {
-            retorno = -1;
+            retorno = 0;
         }
         else
         {
@@ -46,7 +46,7 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo)
         }
     }
 
-    if(retorno == -1)
+    if(retorno == 0)
     {
         printf("\n%s\n", emje);
     }
@@ -56,7 +56,7 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo)
 
 int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maximo)
 {
-    int retorno=0;
+    int retorno=1;
     char strNro[2000];
     float nro;
     int i = 0;
@@ -86,19 +86,19 @@ int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maxi
             }
             else
             {
-                retorno= -1;
+                retorno= 0;
                 break;
             }
         }
         i++;
     }
 
-    if (retorno != -1)
+    if (retorno != 0)
     {
         nro = atof(strNro);
         if (nro>maximo || nro<minimo)
         {
-            retorno = -1;
+            retorno = 0;
         }
         else
         {
@@ -106,7 +106,7 @@ int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maxi
         }
     }
 
-    if(retorno == -1)
+    if(retorno == 0)
     {
         printf("\n%s\n", emje);
     }
@@ -116,7 +116,7 @@ int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maxi
 
 int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maximo)
 {
-    int retorno=0;
+    int retorno=1;
     char str[2000];
     int nro;
     int i = 0;
@@ -129,18 +129,18 @@ int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maxi
     {
         if (!((str[i]>= 'A' && str[i]<= 'Z') || (str[i]>= 'a' && str[i]<= 'z') || (str[i] == ' ')))
         {
-            retorno= -1;
+            retorno= 0;
             break;
         }
         i++;
     }
 
-    if (retorno != -1)
+    if (retorno != 0)
     {
         nro = strlen(str);
         if (nro>maximo || nro<minimo)
         {
-            retorno = -1;
+            retorno = 0;
         }
         else
         {
@@ -148,7 +148,7 @@ int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maxi
         }
     }
 
-    if(retorno == -1)
+    if(retorno == 0)
     {
         printf("\n%s\n", emje);
     }

@@ -8,7 +8,7 @@
 * \param emje Es el mensaje a ser mostrado en caso de error
 * \param minimo. Mínimo valor válido.
 * \param maximo. Máximo valor válido.
-* \return Si obtuvo el numero [0] si no [-1]
+* \return Si obtuvo el numero [1] si no [0]
 *
 */
 int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo);
@@ -20,7 +20,7 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo);
 * \param emje Es el mensaje a ser mostrado en caso de error
 * \param minimo. Mínimo valor válido de length.
 * \param maximo. Máximo valor válido de length.
-* \return Si obtuvo el string [0] si no [-1]
+* \return Si obtuvo el string [1] si no [0]
 *
 */
 int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maximo);
@@ -32,7 +32,7 @@ int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maxi
 * \param emje Es el mensaje a ser mostrado en caso de error
 * \param minimo. Mínimo valor válido.
 * \param maximo. Máximo valor válido.
-* \return Si obtuvo el numero [0] si no [-1]
+* \return Si obtuvo el numero [1] si no [0]
 *
 */
 int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maximo);
