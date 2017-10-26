@@ -326,6 +326,82 @@ void listarUsuarios (eUsuario listaUs[], int sizeUs, eVenta listaVe[], int sizeV
     }
 }
 
+void listarUsConMasPublicaciones (eUsuario listaUs[], int sizeUs, eProducto listaPr[], int sizePr)
+{
+    int i;
+    int j;
+    int acumulador;
+    int idUs [sizeUs];
+    int cantPublic [sizeUs];
+    int max;
+    eUsuario usuario;
+
+
+    // cargo arrays
+    for (i=0; i< sizeUs; i++) //us
+    {
+        acumulador=-1; // caso us borrado
+        idUs[i]=listaUs[i].id;
+
+        if (listaUs[i].estado != -1)
+        {
+            acumulador=0;
+            for(j=0; j<sizePr; j++) //pr
+            {
+                if (listaPr[j].estado != -1)
+                {
+                    if(listaPr[j].idUsuario == listaUs[i].id)
+                    {
+                        acumulador++;
+                    }
+                }
+            }
+        }
+
+        cantPublic[i] = acumulador;
+    }
+
+    // busco la max cant de publicaciones
+    max = maximo(cantPublic, sizeUs);
+
+    // imprimo lista
+
+
+    if (max == -1) // si no hay usuarios
+    {
+        printf("\n No hay usuarios.\n");
+    }
+    else
+    {
+        printf("\n Usuario \t Id \t Cant. Publicaciones \n\n");
+
+        for(j=0; j<sizeUs; j++)
+        {
+            if(cantPublic[j] == max)
+            {
+                usuario = buscarUsuarioPorId(listaUs, sizeUs, idUs[j], 0);
+
+                printf(" %s \t %d \t %d \n", usuario.nombre, usuario.id, max);
+            }
+        }
+    }
+}
+
+int maximo (int listaInt[], int sizeArray)
+{
+    int max;
+    int i;
+
+    for(i=0; i<sizeArray; i++)
+    {
+        if (i==0 || listaInt[i] > max)
+        {
+            max = listaInt[i];
+        }
+    }
+
+    return max;
+}
 
 
 //PRODUCTOS

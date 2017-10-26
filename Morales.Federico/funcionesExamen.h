@@ -32,6 +32,23 @@ typedef struct
 }eVenta;
 
 /**
+* \brief Lista los usuarios con más publicaciones.
+* \param listaUs. Array de eUsuario.
+* \param sizeUs. Tamaño de listaUs.
+* \param listaPr. Array de eProducto
+* \param sizePr. Tamaño de listaPr.
+*/
+void listarUsConMasPublicaciones (eUsuario listaUs[], int sizeUs, eProducto listaPr[], int sizePr);
+
+/**
+* \brief Calcula el màximo valor del array de int.
+* \param listaInt. Array de int.
+* \param sizeArray. Tamaño del array.
+* \return màximo valor del array.
+*/
+int maximo (int listaInt[], int sizeArray);
+
+/**
 * \brief Harcodea lista de usuarios.
 * \param lista. Array de eUsuario
 */

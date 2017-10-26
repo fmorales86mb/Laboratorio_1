@@ -40,10 +40,11 @@ int main()
         printf("\n8) LISTAR PUBLICACIONES DE USUARIO.\n");
         printf("\n9) LISTAR PUBLICACIONES.\n");
         printf("\n10) LISTAR USUARIOS.\n");
+        printf("\n11) LISTAR USUARIOS CON MAYOR CANTIDAD DE PUBLICACIONES.\n");
 
         do
         {
-            flag = getInt(&opcion, "Elija una opcion: ", "Opcion erronea.", 1, 10);
+            flag = getInt(&opcion, "Elija una opcion: ", "Opcion erronea.", 1, 11);
         }while (flag ==-1);
 
         switch(opcion)
@@ -104,6 +105,11 @@ int main()
             case 10:
                 system("cls");
                 listarUsuarios(listaUsuario, US, listaVenta, VE);
+                system("pause");
+                break;
+            case 11:
+                system("cls");
+                listarUsConMasPublicaciones(listaUsuario, US, listaProducto, PR);
                 system("pause");
                 break;
         }

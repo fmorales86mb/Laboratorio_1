@@ -1,11 +1,15 @@
 # depslib dependency file v1.0
-1507216333 source:c:\users\alumno\desktop\morales.federico\funcionesexamen.c
+1509025897 source:c:\users\alumno\desktop\morales.federico\funcionesexamen.c
+	<stdio.h>
+	<stdlib.h>
 	"funcionesExamen.h"
+	"input.h"
+	"bibStrValidacion.h"
 
-1507216299 c:\users\alumno\desktop\morales.federico\funcionesexamen.h
+1509023704 c:\users\alumno\desktop\morales.federico\funcionesexamen.h
 	<string.h>
 
-1507205401 source:c:\users\alumno\desktop\morales.federico\input.c
+1508431015 source:c:\users\alumno\desktop\morales.federico\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -14,18 +18,14 @@
 
 1507205477 source:c:\users\alumno\desktop\morales.federico\strfunc.c
 
-1507216126 source:c:\users\alumno\desktop\morales.federico\main.c
+1509023807 source:c:\users\alumno\desktop\morales.federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funcionesExamen.h"
 	"input.h"
+	"bibStrValidacion.h"
 
-1507205404 c:\users\alumno\desktop\morales.federico\input.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<conio.h>
-	<ctype.h>
+1508431015 c:\users\alumno\desktop\morales.federico\input.h
 
 1507773040 source:d:\desarrollo\utn\laboratorio_1\morales.federico\funcionesexamen.c
 	"funcionesExamen.h"
@@ -90,4 +90,11 @@
 	<string.h>
 
 1507845678 c:\users\fmorales\documents\laboratorio_1\morales.federico\bibstrvalidacion.h
+
+1508431015 source:c:\users\alumno\desktop\morales.federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1508431015 c:\users\alumno\desktop\morales.federico\bibstrvalidacion.h
 
