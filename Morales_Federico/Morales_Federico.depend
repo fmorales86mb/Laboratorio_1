@@ -14,7 +14,7 @@
 	<conio.h>
 	<ctype.h>
 
-1511530542 source:c:\users\alumno\desktop\morales_federico\main.c
+1511533111 source:c:\users\alumno\desktop\morales_federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -24,7 +24,7 @@
 	"input.h"
 	"ArrayList.h"
 
-1511530424 c:\users\alumno\desktop\morales_federico\funciones.h
+1511533111 c:\users\alumno\desktop\morales_federico\funciones.h
 	"ArrayList.h"
 
 1511526004 c:\users\alumno\desktop\morales_federico\bibstrvalidacion.h
@@ -40,7 +40,7 @@
 	<stdlib.h>
 	<string.h>
 
-1511530441 source:c:\users\alumno\desktop\morales_federico\funciones.c
+1511533111 source:c:\users\alumno\desktop\morales_federico\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

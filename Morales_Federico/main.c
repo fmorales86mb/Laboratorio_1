@@ -10,8 +10,8 @@
 
 #define STR 50
 #define STRLONG 1000
-#define FILE_NAME "File.dat"
-#define FILE_NAME_BACKUP "File_copy.dat"
+#define FILE_NAME "File.csv"
+
 
 int main() {
     ArrayList* listaU;
@@ -22,8 +22,6 @@ int main() {
     int opcion=0;
     int flag;
 
-    // aca inicializamos el proximo id para que sea cero por que la lista esta vacia.
-    //proximo_id = 0;
     //levantarLista(lista, FILE_NAME);
 
     while(seguir=='s')
@@ -73,11 +71,10 @@ int main() {
                 break;
             case 6:
                 system("cls");
-                //clearList(lista, FILE_NAME);
+                grabar(listaU, listaR, FILE_NAME);
                 system("pause");
                 break;
             case 7:
-                //guardarLista (lista, FILE_NAME);
                 seguir = 'n';
                 break;
         }

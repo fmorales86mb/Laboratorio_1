@@ -119,40 +119,39 @@ int informar (ArrayList* listaU, ArrayList* listaR)
 {
     ETramite *tramite;
     int i;
+    char tipo[20];
     ArrayList* listaAux = NULL;
 
+    //Creo lista auxiliar con los elementos de las dos listas
     listaAux = listaU->clone(listaU);
+    for (i=0; i<listaR->len(listaR); i++)
+    {
+        listaAux->add(listaAux, listaR->get(listaR, i));
+    }
 
+    // ordeno
     if (listaAux != NULL)
     {
         listaAux->sort(listaAux, comparaElementos, 0);
     }
 
-    printf("\n Nro   dni   atendido  Tramite\n\n");
+    printf("\n   dni   atendido  Tramite\n\n");
 
+    // imprimo
     for(i=0; i<listaAux->len(listaAux); i++)
     {
         tramite = listaAux->get(listaAux, i);
         if(tramite->atendido == 1)
         {
-            printf("   %d      %ld      %d   Urgente\n",i+1, tramite->dni, tramite->atendido);
-        }
-    }
-
-    listaAux->clear(listaAux);
-    listaAux = listaR->clone(listaR);
-
-    if (listaAux != NULL)
-    {
-        listaAux->sort(listaAux, comparaElementos, 0);
-    }
-
-    for(i=0; i<listaAux->len(listaAux); i++)
-    {
-        tramite = listaAux->get(listaAux, i);
-        if(tramite->atendido == 1)
-        {
-            printf("   %d      %ld      %d   Regular\n",i+1, tramite->dni, tramite->atendido);
+            if(listaU->contains(listaU, tramite) == 1)
+            {
+                strcpy(tipo, "Urgente");
+            }
+            else
+            {
+                strcpy(tipo, "Regular");
+            }
+            printf("     %ld      %d   %s\n", tramite->dni, tramite->atendido, tipo);
         }
     }
 
@@ -228,73 +227,15 @@ int pedirTramite (ETramite *tramite)
     return ret;
 }
 
-int levantarLista(ArrayList* lista, char* nombre)
-{
-    /*
-    int retorno;
-    int i;
-    int cant;
-    int maximo = 0;
-    EMovie *item;
-    FILE * archivo;
-
-    retorno = 1;
-    // Intentamos abrir o crear un archivo.
-    archivo = fopen(nombre, "rb");
-    if (archivo == NULL)
-    {
-        archivo = fopen(nombre, "wb");
-        if (archivo == NULL) {
-            retorno = 0;
-        }
-    }
-
-    // Si tenemos el archivo seguimos.
-    if (retorno != 0) {
-        // recorre el archivo del principioo hasta el final
-        for (i=0; !feof(archivo); i++) {
-            // Item apunta a una posicion de memoria donde entra un emovie
-            item = (EMovie *) malloc (sizeof (EMovie));
-            if (item == NULL) {
-                retorno = 0;
-                break;
-            }
-
-            // Leemos un registro del archivo y lo copiamos en la memoria apuntada por item
-            cant = fread (item, sizeof(EMovie), 1, archivo);
-            if (cant != 1){
-                retorno = 0;
-                break;
-            }
-
-            // Actualizamos el maximo
-            if (item->id > maximo || i==0) {
-                maximo = item->id;
-            }
-
-            // Si llegamos aca (por que no salio por ningun brake lo agreamos a la lista
-            lista->add (lista, item);
-        }
-
-        // actualizamos proximo_id
-        proximo_id = maximo + 1;
-
-        fclose(archivo);
-    }
-
-    return retorno;
-    */
-    return 0;
-}
-
-int pisarArchivo(ArrayList *lista, char* nombre, int sizeOfStruct)
+int pisarArchivo(ArrayList *listaU, ArrayList *listaR, char* nombre, int sizeOfStruct)
 {
     int i;
-    int cant;
+    //int cant;
     int retorno = 0;
     FILE *archivo;
+    ETramite* tramiteAux= NULL;
 
-    archivo = fopen(nombre, "wb");
+    archivo = fopen(nombre, "wt");
 
     if (archivo == NULL)
     {
@@ -308,15 +249,15 @@ int pisarArchivo(ArrayList *lista, char* nombre, int sizeOfStruct)
 
         //printf("\nstr: %d\nobj: %d", sizeof(EMovie), sizeOfStruct);
 
-        for(i=0; i<lista->len (lista); i++)
+        for(i=0; i<listaU->len (listaU); i++)
         {
-            cant = fwrite(lista->get(lista, i), sizeOfStruct, 1, archivo);
-
-            if (cant != 1) {
-                printf("\n No pudo escribir correctamente un registro.\n");
-                retorno = 0;
-                break;
-            }
+            tramiteAux = listaU->get(listaU, i);
+            fprintf(archivo, "%ld; Urgente\n",tramiteAux->dni);
+        }
+        for(i=0; i<listaR->len (listaR); i++)
+        {
+            tramiteAux = listaR->get(listaR, i);
+            fprintf(archivo, "%ld; Urgente\n",tramiteAux->dni);
         }
     }
 
@@ -340,99 +281,45 @@ void listarTramites(ArrayList *lista)
     printf("\n");
 }
 
-int grabar (ArrayList* listaU, ArrayList* listaR)
+int grabar (ArrayList* listaU, ArrayList* listaR, char* fileName)
 {
+    ETramite *tramite;
+    int i;
+    ArrayList* listaAux = NULL;
+    listaAux = al_newArrayList();
 
-}
-/*
-int clearList (ArrayList* lista, char* fileName)
-{
-    int ret = 0;
+    ArrayList* listaAuxR = NULL;
+    listaAuxR = al_newArrayList();
 
-    if(lista->clear(lista)==0)
+    for(i=0; i<listaU->len(listaU); i++)
     {
-        ret = 1;
-        printf("\n Lista vaciada.\n");
-        guardarLista(lista, fileName, sizeof(EMovie));
-    }
-
-    return ret;
-}
-
-int copiarLista (ArrayList* lista, char* fileName2, int sizeOfStruct)
-{
-    int ret = 0;
-
-    ArrayList* cloneList = lista->clone(lista);
-
-    if (cloneList != NULL)
-    {
-        if(guardarLista(cloneList, fileName2, sizeOfStruct))
+        tramite = listaU->get(listaU, i);
+        if(tramite->atendido == 0)
         {
-            ret =1;
-        }
-    }
-    return ret;
-}
-
-int crearSublista (ArrayList* lista, char* fileName2, int sizeOfStruct)
-{
-    int ret = 0;
-    int flag;
-    int desde;
-    int hasta;
-
-    // entro si hay elementos en la lista
-    if(lista->isEmpty(lista)==0)
-    {
-        listarPeliculas(lista);
-
-        printf("\n -- Crear Sublista --\n\n");
-        do
-        {
-            flag = pedirInt(&desde, " Desde indice: ", " Ingreso un valor incorrecto.",1 , lista->len(lista));
-        } while(flag == -1);
-
-        do
-        {
-            flag = pedirInt(&hasta, " Hasta indice: ", " Ingreso un valor incorrecto.",desde , lista->len(lista));
-        } while(flag == -1);
-
-        ArrayList* subList = lista->subList(lista, desde-1, hasta-1);
-
-        if (subList != NULL)
-        {
-            if(guardarLista(subList, fileName2, sizeOfStruct))
-            {
-                ret =1;
-            }
+            listaAux->add(listaAux, tramite);
         }
     }
 
-    return ret;
-}
-
-int ordenarLista (ArrayList* lista, char* fileName, int (*pFunc)(void* ,void*), int order )
-{
-    int ret = 0;
-
-    if (lista->sort(lista, pFunc, order) == 0)
+    for(i=0; i<listaR->len(listaR); i++)
     {
-        if (guardarLista(lista, fileName, sizeof(EMovie)))
+        tramite = listaR->get(listaR, i);
+        if(tramite->atendido == 0)
         {
-            ret = 1;
-            listarPeliculas(lista);
+            listaAuxR->add(listaAuxR, tramite);
         }
     }
 
-    return ret;
+    guardarLista(listaAux, listaAuxR, fileName, sizeof(ETramite));
+    printf("\n");
+
+    return 1;
 }
 
-int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
+int guardarLista (ArrayList* listaU, ArrayList* listaR, char* fileName, int sizeOfStruct)
 {
     int retorno = 1;
 
-    if (pisarArchivo(lista, fileName, sizeOfStruct)==0)
+    if (pisarArchivo(listaU, listaR, fileName, sizeOfStruct)==0)
     {
         retorno = 0;
         printf("\n El archivo no se pudo actualizar correctamente.\n\n");
@@ -443,18 +330,17 @@ int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
     }
     return retorno;
 }
-*/
-    // funcion de comparacion
-    int comparaElementos(void* elementoA, void* elementoB)
+
+int comparaElementos(void* elementoA, void* elementoB)
+{
+    if(((ETramite*)elementoA)->dni > ((ETramite*)elementoB)->dni)
     {
-        if(((ETramite*)elementoA)->dni > ((ETramite*)elementoB)->dni)
-        {
-            return 1;
-        }
-        if(((ETramite*)elementoA)->dni < ((ETramite*)elementoB)->dni)
-        {
-            return -1;
-        }
-        return 0;
+        return 1;
     }
+    if(((ETramite*)elementoA)->dni < ((ETramite*)elementoB)->dni)
+    {
+        return -1;
+    }
+    return 0;
+}
 
