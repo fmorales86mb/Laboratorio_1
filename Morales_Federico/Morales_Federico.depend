@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1511477701 source:c:\users\alumno\desktop\morales_federico\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511477701 c:\users\alumno\desktop\morales_federico\arraylist.h
+
+1511477701 source:c:\users\alumno\desktop\morales_federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1511530542 source:c:\users\alumno\desktop\morales_federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511530424 c:\users\alumno\desktop\morales_federico\funciones.h
+	"ArrayList.h"
+
+1511526004 c:\users\alumno\desktop\morales_federico\bibstrvalidacion.h
+
+1511477701 c:\users\alumno\desktop\morales_federico\validacionstr.h
+
+1511477701 c:\users\alumno\desktop\morales_federico\input.h
+
+1511477701 source:c:\users\alumno\desktop\morales_federico\validacionstr.c
+
+1511527647 source:c:\users\alumno\desktop\morales_federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511530441 source:c:\users\alumno\desktop\morales_federico\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
