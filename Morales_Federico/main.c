@@ -53,6 +53,7 @@ int main() {
                 system("cls");
                 agregarTramite(listaR, FILE_NAME);
                 listarTramites(listaR);
+                system("pause");
                 break;
             case 3:
                 system("cls");

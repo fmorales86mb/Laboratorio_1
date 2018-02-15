@@ -50,3 +50,24 @@
 	"input.h"
 	"ArrayList.h"
 
+1518099243 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\funciones.h
+	"ArrayList.h"
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\arraylist.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\bibstrvalidacion.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\validacionstr.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\input.h
+
