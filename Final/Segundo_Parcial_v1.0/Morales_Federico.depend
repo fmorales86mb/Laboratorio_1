@@ -1,0 +1,124 @@
+# depslib dependency file v1.0
+1511477701 source:c:\users\alumno\desktop\morales_federico\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511477701 c:\users\alumno\desktop\morales_federico\arraylist.h
+
+1511477701 source:c:\users\alumno\desktop\morales_federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1511533111 source:c:\users\alumno\desktop\morales_federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511533111 c:\users\alumno\desktop\morales_federico\funciones.h
+	"ArrayList.h"
+
+1511526004 c:\users\alumno\desktop\morales_federico\bibstrvalidacion.h
+
+1511477701 c:\users\alumno\desktop\morales_federico\validacionstr.h
+
+1511477701 c:\users\alumno\desktop\morales_federico\input.h
+
+1511477701 source:c:\users\alumno\desktop\morales_federico\validacionstr.c
+
+1511527647 source:c:\users\alumno\desktop\morales_federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511533111 source:c:\users\alumno\desktop\morales_federico\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1518099243 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\funciones.h
+	"ArrayList.h"
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\arraylist.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\bibstrvalidacion.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\validacionstr.h
+
+1511563181 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\programación 1\morales_federico\input.h
+
+1519161289 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1518817217 d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\arraylist.h
+
+1518817217 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1518817217 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1518817217 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\validacionstr.c
+
+1519162027 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1519160210 d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\funciones.h
+	"ArrayList.h"
+
+1518817217 d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\bibstrvalidacion.h
+
+1518817217 d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\validacionstr.h
+
+1518817217 d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\input.h
+
+1519160310 source:d:\desarrollo\utn\laboratorio_1\final\segundo_parcial_v1.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+

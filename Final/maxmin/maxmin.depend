@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1519172093 source:c:\users\moncho\desktop\maxmin\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"func.h"
+
+1518916870 source:c:\users\moncho\desktop\maxmin\func.c
+	<stdio.h>
+	<stdlib.h>
+
+1518916870 c:\users\moncho\desktop\maxmin\func.h
+
+1518916870 source:d:\desarrollo\utn\laboratorio_1\final\maxmin\func.c
+	<stdio.h>
+	<stdlib.h>
+
+1519176077 source:d:\desarrollo\utn\laboratorio_1\final\maxmin\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"func.h"
+
+1518916870 d:\desarrollo\utn\laboratorio_1\final\maxmin\func.h
+
