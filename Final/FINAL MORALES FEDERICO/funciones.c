@@ -9,20 +9,6 @@
 
 int idCiente = 0;
 
-EFecha* newEFecha ()
-{
-    EFecha* returnAux;
-    returnAux = (EFecha*)malloc(sizeof(EFecha));
-
-    if(returnAux !=NULL)
-    {
-       returnAux->dia = 0;
-       returnAux->mes = 0;
-       returnAux->anio = 0;
-    }
-    return returnAux;
-}
-
 EProducto* newEProducto ()
 {
     EProducto* returnAux;
@@ -33,21 +19,6 @@ EProducto* newEProducto ()
        returnAux->codigo = 0;
        returnAux->descripcion = "";
        returnAux->precio = 0;
-    }
-    return returnAux;
-}
-
-ECliente* newECliente ()
-{
-    ECliente* returnAux;
-    returnAux = (ECliente*)malloc(sizeof(ECliente));
-
-    if(returnAux !=NULL)
-    {
-       strcpy(returnAux->apellido, "");
-       returnAux->dni = 0;
-       returnAux->id = 0;
-       strcpy(returnAux->nombre, "");
     }
     return returnAux;
 }
@@ -95,80 +66,19 @@ int altaClientes(ArrayList *lista, char* fileName)
     return retorno;
 }
 
-int pedirCliente (ECliente *cliente)
-{
-    int flag;
-    int chances = 0;
-    int ret=0;
 
-    if(chances<3)
-    {
-        chances = 0;
-        do
-        {
-            // rompe
-            flag = pedirLong(&(cliente->dni), " Ingrese su DNI: ", " DNI invalido.", 1, 100000000);
-            chances++;
-        }while (flag == -1 && chances<3);
-    }
-
-    if(chances<3)
-    {
-        chances = 0;
-        do
-        {
-            flag = pedirStrLetras(cliente->apellido, " Ingrese su Apellido: ", " Apellido invalido.", 1, 20);
-            chances++;
-        }while (flag == -1 && chances<3);
-    }
-
-    if(chances<3)
-    {
-        chances = 0;
-        do
-        {
-            flag = pedirStrLetras(cliente->nombre, " Ingrese su nombre: ", " nombre invalido.", 1, 20);
-            chances++;
-        }while (flag == -1 && chances<3);
-    }
-
-    if(chances<3 && flag != -1)
-    {
-        ret =1;
-    }
-
-    return ret;
-}
-
-int generarIdCliente (ArrayList* lista)
-{
-    int i;
-    int max;
-    ECliente* elemento;
-
-    for (i=0; i<lista->len(lista); i++)
-    {
-        elemento = lista->get(lista, i);
-        if(i==0 || max < elemento->id)
-        {
-            max = elemento->id;
-        }
-    }
-
-    return max+1;
-}
-
-int modificarCliente (ArrayList* lista)
+int opcionModificarCliente (ArrayList* lista)
 {
     int id = pedirId();
-    //int i;
-    ECliente* elemento;
-    ECliente* elementoAux;
 
-    elemento = buscarCliente(lista, id);
+    EPersona* elemento;
+    EPersona* elementoAux;
+
+    elemento = buscarPersona(lista, id);
+
     if(elemento != NULL)
     {
-        if (pedirCliente(elementoAux))
+        if (pedirPersona(elementoAux))
         {
             strcpy(elemento->apellido, elementoAux->apellido);
             elemento->dni = elementoAux->dni;
@@ -181,45 +91,6 @@ int modificarCliente (ArrayList* lista)
     }
 
     return 0;
-}
-
-ECliente* buscarCliente (ArrayList* lista, int id)
-{
-    int i;
-    ECliente* elemento;
-    ECliente* elementoRet = NULL;
-
-    for(i=0; i<lista->len(lista); i++)
-    {
-        elemento = lista->get(lista, i);
-        if(elemento->id == id)
-        {
-            elementoRet = elemento;
-            break;
-        }
-    }
-
-    return elementoRet;
-}
-
-ECliente* buscarClientePorDNI(ArrayList* lista, long int dni)
-{
-    int i;
-    ECliente* elemento;
-    ECliente* elementoRet = NULL;
-
-    for(i=0; i<lista->len(lista); i++)
-    {
-        elemento = lista->get(lista, i);
-        if(elemento->dni == dni)
-        {
-            elementoRet = elemento;
-            break;
-        }
-    }
-
-    return elementoRet;
-
 }
 
 int pedirId ()
@@ -235,7 +106,7 @@ int pedirId ()
     return id;
 }
 
-void listarClientes(ArrayList* lista)
+void listarClientes(ArrayList* lista, void* funcion)
 {
     ECliente *elemento;
     int i;
@@ -366,6 +237,54 @@ void levantarCVS(ArrayList* lista)
     } while(flag == -1);
 
     levantarListaClientes(lista, fileName);
+}
+
+int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
+{
+    int retorno = 1;
+
+    if (pisarArchivoCliente(lista, fileName, sizeOfStruct)==0)
+    {
+        retorno = 0;
+        printf("\n El archivo no se pudo actualizar correctamente.\n\n");
+    }
+    else
+    {
+        printf("\n Archivo actualizado.\n\n");
+    }
+    return retorno;
+}
+
+int pisarArchivoCliente(ArrayList *lista, char* nombre, int sizeOfStruct)
+{
+    int i;
+    //int cant;
+    int retorno = 0;
+    FILE *archivo;
+    ECliente* elemento= NULL;
+
+    archivo = fopen(nombre, "w");
+
+    if (archivo == NULL)
+    {
+        printf("\n El archivo no puede ser abierto.\n");
+        retorno = 0;
+    }
+    else
+    {
+        retorno = 1;
+
+        for(i=0; i<lista->len (lista); i++)
+        {
+            elemento = lista->get(lista, i);
+            // con comas o pto y coma. El Excel separa las columnas con pto y coma.
+            fprintf(archivo, "%d;%s;%s;%ld\n",elemento->id, elemento->nombre, elemento->apellido, elemento->dni);
+        }
+    }
+
+    fclose(archivo);
+
+    return retorno;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -500,36 +419,7 @@ int informar (ArrayList* listaUA, ArrayList* listaRA)
 
 
 
-int pisarArchivoCliente(ArrayList *lista, char* nombre, int sizeOfStruct)
-{
-    int i;
-    //int cant;
-    int retorno = 0;
-    FILE *archivo;
-    ECliente* elemento= NULL;
 
-    archivo = fopen(nombre, "w");
-
-    if (archivo == NULL)
-    {
-        printf("\n El archivo no puede ser abierto.\n");
-        retorno = 0;
-    }
-    else
-    {
-        retorno = 1;
-
-        for(i=0; i<lista->len (lista); i++)
-        {
-            elemento = lista->get(lista, i);
-            fprintf(archivo, "%d,%s,%s,%ld\n",elemento->id, elemento->nombre, elemento->apellido, elemento->dni);
-        }
-    }
-
-    fclose(archivo);
-
-    return retorno;
-}
 
 /*
 
@@ -570,28 +460,8 @@ int grabar (ArrayList* listaU, ArrayList* listaR, char* fileName)
 }
 */
 
-int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
-{
-    int retorno = 1;
 
-    if (pisarArchivoCliente(lista, fileName, sizeOfStruct)==0)
-    {
-        retorno = 0;
-        printf("\n El archivo no se pudo actualizar correctamente.\n\n");
-    }
-    else
-    {
-        printf("\n Archivo actualizado.\n\n");
-    }
-    return retorno;
-}
 
-// dniA > dniB = 1
-// dniA < dniB = -1
-// dniA = dniB = 0
-/*
-
-*/
 int levantarClientes (ArrayList* lista, char* fileName, int tam)
 {
     int ret=-1;

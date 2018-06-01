@@ -39,7 +39,7 @@ int main() {
         printf("\n 1- Alta de Cliente.\n"); // ok
         printf(" 2- Modificacion de Cliente.\n"); //
         printf(" 3- Baja de Cliente.\n"); //
-        printf(" 4- Listar Clientes.\n"); //
+        printf(" 4- Listar Clientes.\n"); // ok
         printf(" 5- Importar clientes desde .CSV\n"); //
         printf(" 6- Realizar una venta.\n"); //
         printf(" 7- Informar ventas.\n"); //
@@ -56,14 +56,16 @@ int main() {
         {
             case 1:
                 system("cls");
-                altaClientes(listaClientes, FILE_NAME_CLIENTES);
-                guardarLista(listaClientes, FILE_NAME_CLIENTES, sizeof(ECliente));
-                //listarTramites(listaUP);
+                if (altaClientes(listaClientes, FILE_NAME_CLIENTES) != 0)
+                {
+                    guardarLista(listaClientes, FILE_NAME_CLIENTES, sizeof(ECliente));
+                }
                 system("pause");
                 break;
             case 2:
                 system("cls");
-                modificarCliente(listaClientes);
+                listarClientes(listaClientes);
+                opcionModificarCliente(listaClientes);
                 system("pause");
                 break;
             case 3:

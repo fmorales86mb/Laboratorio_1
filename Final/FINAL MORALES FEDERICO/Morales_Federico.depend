@@ -278,3 +278,77 @@
 	"input.h"
 	"ArrayList.h"
 
+1527866812 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1527866812 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\arraylist.h
+
+1527866812 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1527880050 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1527881136 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.h
+	"ArrayList.h"
+	"abmCliente.h"
+	"abmFecha.h"
+
+1527866812 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\bibstrvalidacion.h
+
+1527866812 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\validacionstr.h
+
+1527866812 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\input.h
+
+1527866812 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1527878544 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1527866812 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\validacionstr.c
+	<string.h>
+
+1527877774 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funcionescsv.h
+
+1527884936 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmcliente.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"abmFecha.h"
+	"ArrayList.h"
+
+1527880216 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1527880142 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmcliente.c
+	"abmCliente.h"
+
+1527880216 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.c
+	"abmFecha.h"
+

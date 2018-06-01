@@ -43,6 +43,13 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funciones.h" />
+		<Unit filename="funcionesCSV.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="funcionesCSV.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="input.c">
 			<Option compilerVar="CC" />
 		</Unit>
