@@ -1,4 +1,4 @@
-#include "abmCliente.h"
+#include "abmPersona.h"
 
 EPersona* newEPersona ()
 {
@@ -110,13 +110,38 @@ int pedirPersona (EPersona *persona)
 
     if(chances<3 && flag != -1)
     {
+        do
+        {
+            flag = pedirFecha(persona->fechaNac);
+            chances++;
+        }while (flag == -1 && chances<3);
+        chances = 0;
+    }
+
+    if(chances<3 && flag != -1)
+    {
         ret =1;
     }
 
     return ret;
 }
 
-int modificarPersona(int id, EPersona *persona)
+int reemplazarPersona(ArrayList* lista ,int id, EPersona *personaNueva)
 {
+    int ret = -1;
+    int index = -1;
+    EPersona* personalist = NULL;
 
+    personalist = buscarPersona(lista, id);
+
+    if(personalist != NULL)
+    {
+        index = lista->indexOf(lista, personalist);
+        if (index > -1)
+        {
+            ret = lista->set(lista, index, personaNueva);
+        }
+    }
+
+    return ret;
 }

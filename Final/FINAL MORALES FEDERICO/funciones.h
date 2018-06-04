@@ -1,5 +1,5 @@
 #include "ArrayList.h"
-#include "abmCliente.h"
+#include "abmPersona.h"
 #include "abmFecha.h"
 
 #ifndef FUNCIONES_H_INCLUDED

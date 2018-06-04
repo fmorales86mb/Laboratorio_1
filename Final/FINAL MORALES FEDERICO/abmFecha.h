@@ -12,5 +12,6 @@ typedef struct{
 }EFecha;
 
 EFecha* newEFecha ();
+int pedirFecha (EFecha *fecha);
 
 #endif // ABMFECHA_H_INCLUDED

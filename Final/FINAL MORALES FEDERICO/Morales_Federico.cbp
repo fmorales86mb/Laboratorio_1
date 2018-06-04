@@ -35,6 +35,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ArrayList.h" />
+		<Unit filename="abmFecha.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="abmFecha.h" />
+		<Unit filename="abmPersona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="abmPersona.h" />
 		<Unit filename="bibStrValidacion.c">
 			<Option compilerVar="CC" />
 		</Unit>

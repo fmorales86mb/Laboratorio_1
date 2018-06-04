@@ -20,5 +20,6 @@ EPersona* buscarPersona (ArrayList* lista, int id);
 int generarIdPersona (ArrayList* lista);
 EPersona* buscarPersonaPorDNI(ArrayList* lista, long int dni);
 int pedirPersona (EPersona *persona);
+int reemplazarPersona(ArrayList* lista ,int id, EPersona *personaNueva);
 
 #endif // ABMCLIENTE_H_INCLUDED

@@ -43,14 +43,14 @@ EVenta* newEVenta()
 int altaClientes(ArrayList *lista, char* fileName)
 {
     int retorno = 1;
-    ECliente* elemento = NULL;
-    elemento = newECliente();
+    EPersona* elemento = NULL;
+    elemento = newEPersona();
 
     if (elemento!=NULL)
     {
-        if (pedirCliente(elemento) != 0)
+        if (pedirPersona(elemento) != 0)
         {
-            elemento->id = generarIdCliente(lista);
+            elemento->id = generarIdPersona(lista);
             lista->add (lista, elemento);
         }
         else
@@ -106,9 +106,9 @@ int pedirId ()
     return id;
 }
 
-void listarClientes(ArrayList* lista, void* funcion)
+void listarClientes(ArrayList* lista)
 {
-    ECliente *elemento;
+    EPersona *elemento;
     int i;
 
     lista->sort(lista, comparaElementos, 0);
@@ -124,11 +124,11 @@ void listarClientes(ArrayList* lista, void* funcion)
 
 int comparaElementos(void* elementoA, void* elementoB)
 {
-    if(strcmp(((ECliente*)elementoA)->apellido , ((ECliente*)elementoB)->apellido))
+    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
     {
         return 1;
     }
-    if(strcmp(((ECliente*)elementoA)->apellido , ((ECliente*)elementoB)->apellido))
+    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
     {
         return -1;
     }
@@ -145,7 +145,7 @@ void realizarVenta (ArrayList* listaC, ArrayList* listaV)
     EFecha* fecha = newEFecha();
     EVenta* venta = newEVenta();
 
-    if (buscarCliente(listaC, id) != NULL)
+    if (buscarPersona(listaC, id) != NULL)
     {
         do
         {
@@ -189,7 +189,7 @@ int levantarListaClientes (ArrayList* lista, char* fileName)
 {
     int ret;
     char name[500], lastName[500], id[500],dni[500];
-    ECliente* cliente;
+    EPersona* cliente;
 
    FILE * pFile;
 
@@ -200,9 +200,9 @@ int levantarListaClientes (ArrayList* lista, char* fileName)
     {
         fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, name, lastName,dni);
 
-        if(buscarClientePorDNI(lista, atol(dni)) != NULL)
+        if(buscarPersonaPorDNI(lista, atol(dni)) != NULL)
         {
-            cliente = newECliente();
+            cliente = newEPersona();
             cliente->id = atoi(id);
             strcpy(cliente->apellido, lastName);
             strcpy(cliente->nombre, name);
@@ -261,7 +261,7 @@ int pisarArchivoCliente(ArrayList *lista, char* nombre, int sizeOfStruct)
     //int cant;
     int retorno = 0;
     FILE *archivo;
-    ECliente* elemento= NULL;
+    EPersona* elemento= NULL;
 
     archivo = fopen(nombre, "w");
 

@@ -7,6 +7,7 @@
 #include "validacionStr.h"
 #include "input.h"
 #include "ArrayList.h"
+#include "abmPersona.h"
 
 #define STR 50
 #define STRLONG 1000
@@ -46,10 +47,11 @@ int main() {
         printf(" 8- Informar ventas por producto.\n"); //
         printf(" 9- Generar informe de ventas.\n"); //
         printf(" 10- Informar cantidad de ventas por Cliente.\n"); //
+        printf(" 11- Salir.\n"); //
 
         do
         {
-            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.",1 , 10);
+            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.",1 , 11);
         } while(flag == -1);
 
         switch(opcion)
@@ -58,7 +60,7 @@ int main() {
                 system("cls");
                 if (altaClientes(listaClientes, FILE_NAME_CLIENTES) != 0)
                 {
-                    guardarLista(listaClientes, FILE_NAME_CLIENTES, sizeof(ECliente));
+                    guardarLista(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona));
                 }
                 system("pause");
                 break;
@@ -89,6 +91,9 @@ int main() {
                 system("pause");
                 break;
             case 7:
+                seguir = 'n';
+                break;
+            case 11:
                 seguir = 'n';
                 break;
         }
