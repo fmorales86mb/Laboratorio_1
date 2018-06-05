@@ -291,7 +291,7 @@
 	<stdlib.h>
 	<string.h>
 
-1528121404 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
+1528232988 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -301,10 +301,12 @@
 	"input.h"
 	"ArrayList.h"
 
-1528121289 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.h
+1528232987 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.h
 	"ArrayList.h"
 	"abmPersona.h"
 	"abmFecha.h"
+	"abmProducto.h"
+	"abmVenta.h"
 
 1527866812 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\bibstrvalidacion.h
 
@@ -319,7 +321,7 @@
 	<conio.h>
 	<ctype.h>
 
-1528121536 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
+1528234811 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -353,13 +355,30 @@
 1528124167 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.c
 	"abmFecha.h"
 
-1528122184 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
+1528234657 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
 	"abmPersona.h"
 
-1528122199 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
+1528234811 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"abmFecha.h"
 	"ArrayList.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+
+1528209965 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmproducto.c
+	"abmProducto.h"
+
+1528209907 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmventa.c
+	"abmVenta.h"
+
+1528209982 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmproducto.h
+	<stdio.h>
+	<stdlib.h>
+
+1528210035 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmventa.h
+	<stdio.h>
+	<stdlib.h>
+	"abmFecha.h"
 

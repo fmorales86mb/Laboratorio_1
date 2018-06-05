@@ -36,10 +36,10 @@ int main() {
     while(seguir=='s')
     {
         system("cls");
-        printf("\n\t--MENU--\n");
-        printf("\n 1- Alta de Cliente.\n"); // ok
+        printf("\n\t--MENU--\n\n");
+        printf(" 1- Alta de Cliente.\n"); // ok
         printf(" 2- Modificacion de Cliente.\n"); //
-        printf(" 3- Baja de Cliente.\n"); //
+        printf(" 3- Baja de Cliente.\n"); // ok
         printf(" 4- Listar Clientes.\n"); // ok
         printf(" 5- Importar clientes desde .CSV\n"); //
         printf(" 6- Realizar una venta.\n"); //
@@ -47,37 +47,40 @@ int main() {
         printf(" 8- Informar ventas por producto.\n"); //
         printf(" 9- Generar informe de ventas.\n"); //
         printf(" 10- Informar cantidad de ventas por Cliente.\n"); //
-        printf(" 11- Salir.\n"); //
+        printf(" 11- Guardar Clientes en archivo TXT.\n"); //
+        printf(" 12- Guardar Clientes en archivo binario.\n"); //
+        printf(" 13- Guardar Clientes en archivo CSV.\n"); //ok
+        printf(" 14- Levantar Clientes de archivo CSV.\n"); //
+        printf(" 15- Levantar Clientes de archivo TXT.\n"); //
+        printf(" 16- Levantar Clientes de archivo binario.\n"); //
+        printf(" 20- Salir.\n"); //
 
         do
         {
-            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.",1 , 11);
+            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.",1 , 20);
         } while(flag == -1);
 
         switch(opcion)
         {
             case 1:
                 system("cls");
-                if (altaClientes(listaClientes, FILE_NAME_CLIENTES) != 0)
-                {
-                    guardarLista(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona));
-                }
+                altaPersona(listaClientes);
                 system("pause");
                 break;
             case 2:
                 system("cls");
-                listarClientes(listaClientes);
-                opcionModificarCliente(listaClientes);
+                listarPersonas(listaClientes);
+                modificarPersona(listaClientes);
                 system("pause");
                 break;
             case 3:
                 system("cls");
-                //proximoCliente(listaUP, listaRP, listaUA, listaRA);
-                system("pause");
+                listarPersonas(listaClientes);
+                bajaPersona(listaClientes);
                 break;
             case 4:
                 system("cls");
-                listarClientes(listaClientes);
+                listarPersonas(listaClientes);
                 system("pause");
                break;
             case 5:
@@ -90,10 +93,12 @@ int main() {
                 realizarVenta(listaClientes, listaVentas);
                 system("pause");
                 break;
-            case 7:
-                seguir = 'n';
+            case 13:
+                system("cls");
+                pisarArchivoCSVPersona(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona));
+                system("pause");
                 break;
-            case 11:
+            case 20:
                 seguir = 'n';
                 break;
         }

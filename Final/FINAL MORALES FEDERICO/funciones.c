@@ -9,119 +9,6 @@
 
 int idCiente = 0;
 
-EProducto* newEProducto ()
-{
-    EProducto* returnAux;
-    returnAux = (EProducto*)malloc(sizeof(EProducto));
-
-    if(returnAux !=NULL)
-    {
-       returnAux->codigo = 0;
-       returnAux->descripcion = "";
-       returnAux->precio = 0;
-    }
-    return returnAux;
-}
-
-EVenta* newEVenta()
-{
-    EVenta* returnAux;
-    returnAux = (EVenta*)malloc(sizeof(EVenta));
-
-    if(returnAux !=NULL)
-    {
-       returnAux->cantidad = 0;
-       returnAux->idCliente = 0;
-       returnAux->id = 0;
-       returnAux->precioUnitario = 0;
-       strcpy(returnAux->codigoProducto, "");
-       returnAux->fechaVenta = newEFecha();
-    }
-    return returnAux;
-}
-
-int altaClientes(ArrayList *lista, char* fileName)
-{
-    int retorno = 1;
-    EPersona* elemento = NULL;
-    elemento = newEPersona();
-
-    if (elemento!=NULL)
-    {
-        if (pedirPersona(elemento) != 0)
-        {
-            elemento->id = generarIdPersona(lista);
-            lista->add (lista, elemento);
-        }
-        else
-        {
-            retorno = 0;
-        }
-    }
-    else
-    {
-        retorno = 0;
-    }
-
-    return retorno;
-}
-
-
-int opcionModificarCliente (ArrayList* lista)
-{
-    int id = pedirId();
-
-    EPersona* elemento;
-    EPersona* elementoAux;
-
-    elemento = buscarPersona(lista, id);
-
-    if(elemento != NULL)
-    {
-        if (pedirPersona(elementoAux))
-        {
-            strcpy(elemento->apellido, elementoAux->apellido);
-            elemento->dni = elementoAux->dni;
-            strcpy(elemento->nombre, elementoAux->nombre);
-        }
-    }
-    else
-    {
-        printf("no existe ese cliente.");
-    }
-
-    return 0;
-}
-
-int pedirId ()
-{
-    int id;
-    int flag;
-
-    do
-    {
-        flag = pedirInt(&id, " Ingrese ID: ", " ID invalido.", 1, 10000);
-    }while (flag == -1);
-
-    return id;
-}
-
-void listarClientes(ArrayList* lista)
-{
-    EPersona *elemento;
-    int i;
-
-    lista->sort(lista, comparaElementos, 0);
-    printf("\n ID   Apellido   Nombre  DNI  \n\n");
-
-    for(i=0; i<lista->len(lista); i++) {
-        elemento = lista->get(lista, i);
-        printf("   %d      %s        %s    %ld \n", elemento->id, elemento->apellido, elemento->nombre, elemento->dni);
-    }
-
-    printf("\n");
-}
-
 int comparaElementos(void* elementoA, void* elementoB)
 {
     if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
@@ -138,7 +25,7 @@ int comparaElementos(void* elementoA, void* elementoB)
 void realizarVenta (ArrayList* listaC, ArrayList* listaV)
 {
     int flag;
-    int id = pedirId();
+    int id = pedirIdPersona();
     float precio;
     char strCodigo[17];
     int cantidad;
@@ -239,11 +126,11 @@ void levantarCVS(ArrayList* lista)
     levantarListaClientes(lista, fileName);
 }
 
-int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
+int guardarListaClientesCSV (ArrayList* lista, char* fileName, int sizeOfStruct)
 {
     int retorno = 1;
 
-    if (pisarArchivoCliente(lista, fileName, sizeOfStruct)==0)
+    if (pisarArchivoCSVPersona(lista, fileName, sizeOfStruct)==0)
     {
         retorno = 0;
         printf("\n El archivo no se pudo actualizar correctamente.\n\n");
@@ -255,37 +142,33 @@ int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
     return retorno;
 }
 
-int pisarArchivoCliente(ArrayList *lista, char* nombre, int sizeOfStruct)
+int opcionModificarCliente (ArrayList* lista)
 {
-    int i;
-    //int cant;
-    int retorno = 0;
-    FILE *archivo;
-    EPersona* elemento= NULL;
+    int id = pedirIdPersona();
 
-    archivo = fopen(nombre, "w");
+    EPersona* elemento = NULL;
+    EPersona* elementoAux;
 
-    if (archivo == NULL)
+    elemento = buscarPersona(lista, id);
+
+    if(elemento != NULL)
     {
-        printf("\n El archivo no puede ser abierto.\n");
-        retorno = 0;
+        if (pedirPersona(elementoAux))
+        {
+            strcpy(elemento->apellido, elementoAux->apellido);
+            elemento->dni = elementoAux->dni;
+            strcpy(elemento->nombre, elementoAux->nombre);
+        }
     }
     else
     {
-        retorno = 1;
-
-        for(i=0; i<lista->len (lista); i++)
-        {
-            elemento = lista->get(lista, i);
-            // con comas o pto y coma. El Excel separa las columnas con pto y coma.
-            fprintf(archivo, "%d;%s;%s;%ld\n",elemento->id, elemento->nombre, elemento->apellido, elemento->dni);
-        }
+        printf("no existe ese cliente.");
     }
 
-    fclose(archivo);
-
-    return retorno;
+    return 0;
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 /*

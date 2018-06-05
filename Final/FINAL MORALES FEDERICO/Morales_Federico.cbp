@@ -43,6 +43,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="abmPersona.h" />
+		<Unit filename="abmProducto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="abmProducto.h" />
+		<Unit filename="abmVenta.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="abmVenta.h" />
 		<Unit filename="bibStrValidacion.c">
 			<Option compilerVar="CC" />
 		</Unit>
