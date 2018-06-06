@@ -13,6 +13,7 @@
 #define STRLONG 1000
 #define FILE_NAME "File.csv"
 #define FILE_NAME_CLIENTES "clientes.csv"
+#define FILE_NAME_CLIENTES_EXAMPLE "ClientesExample.csv"
 
 
 int main() {
@@ -38,10 +39,9 @@ int main() {
         system("cls");
         printf("\n\t--MENU--\n\n");
         printf(" 1- Alta de Cliente.\n"); // ok
-        printf(" 2- Modificacion de Cliente.\n"); //
+        printf(" 2- Modificacion de Cliente.\n"); //ok
         printf(" 3- Baja de Cliente.\n"); // ok
         printf(" 4- Listar Clientes.\n"); // ok
-        printf(" 5- Importar clientes desde .CSV\n"); //
         printf(" 6- Realizar una venta.\n"); //
         printf(" 7- Informar ventas.\n"); //
         printf(" 8- Informar ventas por producto.\n"); //
@@ -50,7 +50,7 @@ int main() {
         printf(" 11- Guardar Clientes en archivo TXT.\n"); //
         printf(" 12- Guardar Clientes en archivo binario.\n"); //
         printf(" 13- Guardar Clientes en archivo CSV.\n"); //ok
-        printf(" 14- Levantar Clientes de archivo CSV.\n"); //
+        printf(" 14- Levantar Clientes de archivo CSV.\n"); //ok
         printf(" 15- Levantar Clientes de archivo TXT.\n"); //
         printf(" 16- Levantar Clientes de archivo binario.\n"); //
         printf(" 20- Salir.\n"); //
@@ -96,6 +96,11 @@ int main() {
             case 13:
                 system("cls");
                 pisarArchivoCSVPersona(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona));
+                system("pause");
+                break;
+            case 14:
+                system("cls");
+                levantarListaCSVPersonas(listaClientes, FILE_NAME_CLIENTES_EXAMPLE);
                 system("pause");
                 break;
             case 20:

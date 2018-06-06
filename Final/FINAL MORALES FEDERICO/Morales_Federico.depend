@@ -291,7 +291,7 @@
 	<stdlib.h>
 	<string.h>
 
-1528232988 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
+1528300339 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -301,7 +301,7 @@
 	"input.h"
 	"ArrayList.h"
 
-1528232987 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.h
+1528290480 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.h
 	"ArrayList.h"
 	"abmPersona.h"
 	"abmFecha.h"
@@ -321,7 +321,7 @@
 	<conio.h>
 	<ctype.h>
 
-1528234811 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
+1528300339 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -332,7 +332,7 @@
 	"ArrayList.h"
 	"abmPersona.h"
 
-1527866812 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\validacionstr.c
+1528297861 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\validacionstr.c
 	<string.h>
 
 1527877774 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funcionescsv.h
@@ -344,21 +344,22 @@
 	"abmFecha.h"
 	"ArrayList.h"
 
-1528124168 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.h
+1528295877 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"validacionStr.h"
 
 1527880142 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmcliente.c
 	"abmCliente.h"
 
-1528124167 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.c
+1528298832 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.c
 	"abmFecha.h"
 
-1528234657 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
+1528295811 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
 	"abmPersona.h"
 
-1528234811 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
+1528300339 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

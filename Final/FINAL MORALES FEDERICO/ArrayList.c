@@ -519,7 +519,7 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
     }
 
     return returnAux;
-        }
+}
 
 
 /** \brief Increment the number of elements in pList in AL_INCREMENT elements.

@@ -9,18 +9,7 @@
 
 int idCiente = 0;
 
-int comparaElementos(void* elementoA, void* elementoB)
-{
-    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
-    {
-        return 1;
-    }
-    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
-    {
-        return -1;
-    }
-    return 0;
-}
+
 
 void realizarVenta (ArrayList* listaC, ArrayList* listaV)
 {
@@ -72,41 +61,6 @@ void realizarVenta (ArrayList* listaC, ArrayList* listaV)
     }
 }
 
-int levantarListaClientes (ArrayList* lista, char* fileName)
-{
-    int ret;
-    char name[500], lastName[500], id[500],dni[500];
-    EPersona* cliente;
-
-   FILE * pFile;
-
-   pFile = fopen (fileName, "r");
-    if (pFile != NULL)
-    {
-    while(!feof(pFile))
-    {
-        fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, name, lastName,dni);
-
-        if(buscarPersonaPorDNI(lista, atol(dni)) != NULL)
-        {
-            cliente = newEPersona();
-            cliente->id = atoi(id);
-            strcpy(cliente->apellido, lastName);
-            strcpy(cliente->nombre, name);
-            cliente->dni = atol(dni);
-            lista->add(lista, cliente);
-        }
-    }
-    }
-    else
-    {
-        printf("\n No se pudo abrir.");
-    }
-    fclose(pFile);
-
-    return ret;
-}
-
 void crearCSV(char* fileName)
 {
     FILE* archivo;
@@ -123,7 +77,7 @@ void levantarCVS(ArrayList* lista)
         flag = pedirStrLetras(fileName, "ingrese nombre del archivo: ", "nombre Erroneo", 1, 50);
     } while(flag == -1);
 
-    levantarListaClientes(lista, fileName);
+    levantarListaCSVPersonas(lista, fileName);
 }
 
 int guardarListaClientesCSV (ArrayList* lista, char* fileName, int sizeOfStruct)

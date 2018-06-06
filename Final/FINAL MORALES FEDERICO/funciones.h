@@ -13,7 +13,6 @@
 
 int modificarCliente (ArrayList* lista);
 int comparaElementos(void* elementoA, void* elementoB);
-int levantarListaClientes (ArrayList* lista, char* fileName);
 void realizarVenta (ArrayList* listaC, ArrayList* listaV);
 void crearCSV(char* fileName);
 void levantarCVS(ArrayList* lista);

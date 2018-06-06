@@ -14,6 +14,17 @@ EFecha* newEFecha ()
     return returnAux;
 }
 
+EFecha* newEFechaIni (int d, int m, int y)
+{
+    EFecha* fecha = newEFecha();
+    if (fecha != NULL)
+    {
+        fecha->dia = d;
+        fecha->mes = m;
+        fecha->anio = y;
+    }
+}
+
 int pedirFecha (EFecha *fecha)
 {
     int flag;
@@ -56,4 +67,28 @@ int pedirFecha (EFecha *fecha)
     }
 
     return ret;
+}
+
+EFecha* aToDate (char* date)
+{
+    int barra1;
+    int barra2;
+    int y, m, d;
+    char anio [10];
+    char mes [10];
+    char dia [10];
+
+    barra1 = primerPosicionDe(date, 0, '/');
+    subString(date, dia, 0, barra1);
+
+    barra2 = primerPosicionDe(date, barra1+1, '/');
+    subString(date, mes, barra1+1, barra2);
+
+    subString(date, anio, barra2+1, strlen(date));
+
+    y = atoi(anio);
+    m = atoi(mes);
+    d = atoi(dia);
+
+    return newEFechaIni(d, m, y);
 }

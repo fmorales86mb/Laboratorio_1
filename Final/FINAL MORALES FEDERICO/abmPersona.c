@@ -128,26 +128,6 @@ int pedirPersona (EPersona *persona)
     return ret;
 }
 
-int reemplazarPersona(ArrayList* lista ,int id, EPersona *personaNueva)
-{
-    int ret = -1;
-    int index = -1;
-    EPersona* personalist = NULL;
-
-    personalist = lista->get(lista, buscarPersona(lista, id));
-
-    if(personalist != NULL)
-    {
-        index = lista->indexOf(lista, personalist);
-        if (index > -1)
-        {
-            ret = lista->set(lista, index, personaNueva);
-        }
-    }
-
-    return ret;
-}
-
 int altaPersona(ArrayList *lista)
 {
     int retorno = 1;
@@ -212,7 +192,7 @@ void listarPersonas(ArrayList* lista)
     EPersona *elemento;
     int i;
 
-    //lista->sort(lista, comparaElementos, 0);
+    lista = lista->sort(lista, comparaElementos, 0);
     printf("\n ID   Apellido     Nombre     DNI        Fecha Nacimiento\n\n");
 
     for(i=0; i<lista->len(lista); i++) {
@@ -226,6 +206,19 @@ void listarPersonas(ArrayList* lista)
     }
 
     printf("\n");
+}
+
+int comparaElementos(void* elementoA, void* elementoB)
+{
+    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
+    {
+        return 1;
+    }
+    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
+    {
+        return -1;
+    }
+    return 0;
 }
 
 int pedirIdPersona ()
@@ -321,4 +314,48 @@ void modificarPersona(ArrayList* lista)
     {
         printf("\nID no existe.\n");
     }
+}
+
+int levantarListaCSVPersonas (ArrayList* lista, char* fileName)
+{
+    int ret;
+    char name[500], lastName[500], id[500],dni[500], fecha[500];
+    EPersona* cliente;
+
+    FILE * pFile;
+
+    pFile = fopen (fileName, "r");
+    if (pFile != NULL)
+    {
+        fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id, name, lastName,dni, fecha);
+        while(!feof(pFile))
+        {
+            fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id, name, lastName,dni, fecha);
+
+            cliente = newEPersona();
+            cliente->id = atoi(id);
+            strcpy(cliente->apellido, lastName);
+            strcpy(cliente->nombre, name);
+            cliente->dni = atol(dni);
+            cliente->fechaNac = aToDate(fecha);
+            lista->add(lista, cliente);
+            /*if(buscarPersonaPorDNI(lista, atol(dni))<0)
+            {
+                cliente = newEPersona();
+                cliente->id = atoi(id);
+                strcpy(cliente->apellido, lastName);
+                strcpy(cliente->nombre, name);
+                cliente->dni = atol(dni);
+                lista->add(lista, cliente);
+            }*/
+        }
+        printf("\n Se levantaron los datos correctamente\n.");
+    }
+    else
+    {
+        printf("\n No se pudo abrir \n.");
+    }
+    fclose(pFile);
+
+    return ret;
 }

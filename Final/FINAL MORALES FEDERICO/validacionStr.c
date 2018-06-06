@@ -89,15 +89,17 @@ int subString (char* str, char* subStr, int desde, int posicion)
 {
     int ret = -1;
     int i;
+    int isub = 0;
 
-    if (strlen(str)>posicion)
+    if (strlen(str)>=posicion)
     {
-        for(i=desde; i<=posicion; i++)
+        for(i=desde; i<posicion; i++)
         {
             ret = 0;
-            *(subStr+i) = *(str+i);
+            *(subStr+isub) = *(str+i);
+            isub++;
         }
-        *(subStr+i) = '\0';
+        *(subStr+isub) = '\0';
     }
 
     return ret;
