@@ -22,6 +22,7 @@ typedef struct{
 }EPersona;
 
 EPersona* newEPersona ();
+EPersona* newEPersonaIni(int p_id, char* p_apellido, char* p_nombre, long int p_dni, EFecha* p_fechaNacimiento);
 int buscarPersona (ArrayList* lista, int id);
 int generarIdPersona (ArrayList* lista);
 int buscarPersonaPorDNI(ArrayList* lista, long int dni);

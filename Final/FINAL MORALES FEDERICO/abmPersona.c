@@ -17,6 +17,21 @@ EPersona* newEPersona ()
     return returnAux;
 }
 
+EPersona* newEPersonaIni(int p_id, char* p_apellido, char* p_nombre, long int p_dni, EFecha* p_fechaNacimiento)
+{
+    EPersona* persona = newEPersona();
+    if (persona != NULL)
+    {
+        persona->id = p_id;
+        strcpy(persona->apellido, p_apellido);
+        strcpy(persona->nombre, p_nombre);
+        persona->dni = p_dni;
+        persona->fechaNac = p_fechaNacimiento;
+    }
+
+    return persona;
+}
+
 int buscarPersona (ArrayList* lista, int id)
 {
     int i;
@@ -192,7 +207,7 @@ void listarPersonas(ArrayList* lista)
     EPersona *elemento;
     int i;
 
-    lista = lista->sort(lista, comparaElementos, 0);
+    //lista = lista->sort(lista, comparaElementos, 0);
     printf("\n ID   Apellido     Nombre     DNI        Fecha Nacimiento\n\n");
 
     for(i=0; i<lista->len(lista); i++) {
@@ -316,7 +331,7 @@ void modificarPersona(ArrayList* lista)
     }
 }
 
-int levantarListaCSVPersonas (ArrayList* lista, char* fileName)
+int levantarListaCSVPersonas (ArrayList* lista, char* fileName) //45780899
 {
     int ret;
     char name[500], lastName[500], id[500],dni[500], fecha[500];
@@ -331,23 +346,19 @@ int levantarListaCSVPersonas (ArrayList* lista, char* fileName)
         while(!feof(pFile))
         {
             fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id, name, lastName,dni, fecha);
-
+/*
             cliente = newEPersona();
             cliente->id = atoi(id);
             strcpy(cliente->apellido, lastName);
             strcpy(cliente->nombre, name);
             cliente->dni = atol(dni);
             cliente->fechaNac = aToDate(fecha);
-            lista->add(lista, cliente);
-            /*if(buscarPersonaPorDNI(lista, atol(dni))<0)
+            lista->add(lista, cliente);*/
+            if(buscarPersonaPorDNI(lista, atol(dni))<0) //filtra
             {
-                cliente = newEPersona();
-                cliente->id = atoi(id);
-                strcpy(cliente->apellido, lastName);
-                strcpy(cliente->nombre, name);
-                cliente->dni = atol(dni);
+                cliente = newEPersonaIni(atoi(id), lastName, name, atol(dni), aToDate(fecha));
                 lista->add(lista, cliente);
-            }*/
+            }
         }
         printf("\n Se levantaron los datos correctamente\n.");
     }
@@ -356,6 +367,34 @@ int levantarListaCSVPersonas (ArrayList* lista, char* fileName)
         printf("\n No se pudo abrir \n.");
     }
     fclose(pFile);
+
+    return ret;
+}
+
+int levantarListaTXTPersonas (ArrayList* lista, char* fileName, int cant)
+{
+    int ret=-1;
+    int i=0;
+
+    FILE* archivo;
+    archivo = fopen(fileName, "r");
+    if(archivo!=NULL)
+    {
+        ret=0;
+        while(!feof(archivo))
+        {
+            fread(lista+i, 1, cant, archivo);
+            i++;
+        }
+    }
+    else
+    {
+        archivo = fopen(fileName, "w");
+        if(archivo != NULL)
+        {
+            ret=0;
+        }
+    }
 
     return ret;
 }
