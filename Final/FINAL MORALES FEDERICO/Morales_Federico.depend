@@ -291,7 +291,7 @@
 	<stdlib.h>
 	<string.h>
 
-1528382265 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
+1528826934 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -321,7 +321,7 @@
 	<conio.h>
 	<ctype.h>
 
-1528300339 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
+1528899508 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -356,10 +356,10 @@
 1528298832 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmfecha.c
 	"abmFecha.h"
 
-1528376085 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
+1528899508 source:c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.c
 	"abmPersona.h"
 
-1528384677 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
+1528832179 c:\users\fmorales\documents\laboratorio_1\final\final morales federico\abmpersona.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

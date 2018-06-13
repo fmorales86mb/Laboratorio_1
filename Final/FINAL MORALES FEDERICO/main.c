@@ -14,6 +14,8 @@
 #define FILE_NAME "File.csv"
 #define FILE_NAME_CLIENTES "clientes.csv"
 #define FILE_NAME_CLIENTES_EXAMPLE "ClientesExample.csv"
+#define FILE_NAME_CLIENTES_TXT "Clientes.txt"
+#define FILE_NAME_CLIENTES_BIN "Clientes.bin"
 
 
 int main() {
@@ -47,12 +49,12 @@ int main() {
         printf(" 8- Informar ventas por producto.\n"); //
         printf(" 9- Generar informe de ventas.\n"); //
         printf(" 10- Informar cantidad de ventas por Cliente.\n"); //
-        printf(" 11- Guardar Clientes en archivo TXT.\n"); //
-        printf(" 12- Guardar Clientes en archivo binario.\n"); //
+        printf(" 11- Guardar Clientes en archivo TXT.\n"); //ok
+        printf(" 12- Guardar Clientes en archivo binario.\n"); // ok
         printf(" 13- Guardar Clientes en archivo CSV.\n"); //ok
         printf(" 14- Levantar Clientes de archivo CSV.\n"); //ok
-        printf(" 15- Levantar Clientes de archivo TXT.\n"); //
-        printf(" 16- Levantar Clientes de archivo binario.\n"); //
+        printf(" 15- Levantar Clientes de archivo TXT.\n"); //ok
+        printf(" 16- Levantar Clientes de archivo binario.\n"); // ok
         printf(" 20- Salir.\n"); //
 
         do
@@ -93,14 +95,34 @@ int main() {
                 realizarVenta(listaClientes, listaVentas);
                 system("pause");
                 break;
+            case 11:
+                system("cls");
+                guardarCsvTxtPersona(listaClientes, FILE_NAME_CLIENTES_TXT, sizeof(EPersona), 1);
+                system("pause");
+                break;
+            case 12:
+                system("cls");
+                guardarBinPersona(listaClientes, FILE_NAME_CLIENTES_BIN, sizeof(EPersona));
+                system("pause");
+                break;
             case 13:
                 system("cls");
-                pisarArchivoCSVPersona(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona));
+                guardarCsvTxtPersona(listaClientes, FILE_NAME_CLIENTES, sizeof(EPersona), 1);
                 system("pause");
                 break;
             case 14:
                 system("cls");
-                levantarListaCSVPersonas(listaClientes, FILE_NAME_CLIENTES_EXAMPLE);
+                cargarCsvTxtPersonas(listaClientes, FILE_NAME_CLIENTES_EXAMPLE, 1);
+                system("pause");
+                break;
+            case 15:
+                system("cls");
+                cargarCsvTxtPersonas(listaClientes, FILE_NAME_CLIENTES_TXT, 1);
+                system("pause");
+                break;
+            case 16:
+                system("cls");
+                cargarBinPersonas(listaClientes, FILE_NAME_CLIENTES_BIN, sizeof(EPersona));
                 system("pause");
                 break;
             case 20:

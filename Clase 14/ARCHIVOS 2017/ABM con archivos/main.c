@@ -210,6 +210,7 @@ void listar(alumno *losAlumnos)
 	}
 	getch();
 }
+
 void baja(alumno* losAlumnos)
 {
 	int legajo, flag=0,i;
@@ -245,6 +246,7 @@ void baja(alumno* losAlumnos)
 		getch();
 	}
 }
+
 void modificar(alumno* losAlumnos)
 {
 	int legajo, flag=0,i;
@@ -284,6 +286,7 @@ void modificar(alumno* losAlumnos)
 		getch();
 	}
 }
+
 void mayorPromedio(alumno* losAlumnos)
 {
 	int i, flag=0;

@@ -77,14 +77,14 @@ void levantarCVS(ArrayList* lista)
         flag = pedirStrLetras(fileName, "ingrese nombre del archivo: ", "nombre Erroneo", 1, 50);
     } while(flag == -1);
 
-    levantarListaCSVPersonas(lista, fileName);
+    cargarCsvTxtPersonas(lista, fileName, 1);
 }
 
 int guardarListaClientesCSV (ArrayList* lista, char* fileName, int sizeOfStruct)
 {
     int retorno = 1;
 
-    if (pisarArchivoCSVPersona(lista, fileName, sizeOfStruct)==0)
+    if (guardarCsvTxtPersona(lista, fileName, sizeOfStruct, 1)==0)
     {
         retorno = 0;
         printf("\n El archivo no se pudo actualizar correctamente.\n\n");
