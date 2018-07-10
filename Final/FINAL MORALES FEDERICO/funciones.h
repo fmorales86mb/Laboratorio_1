@@ -20,7 +20,6 @@ void opcionListarVenta(ArrayList* listaV); // 7
 void informarVentasPorProducto (ArrayList* listaV); // 8
 void informarVentasPorCliente (ArrayList* listaC, ArrayList* listaV); // 10
 
-
 void crearCSV(char* fileName);
 void levantarCVS(ArrayList* lista);
 

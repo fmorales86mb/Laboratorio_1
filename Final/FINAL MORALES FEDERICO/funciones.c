@@ -75,7 +75,7 @@ void informarVentasPorProducto (ArrayList* listaV)
     int chances = 0;
     int flag;
     ArrayList* listaVdeP = NULL;
-    char* cod;
+    char cod[17];
 
     do
     {

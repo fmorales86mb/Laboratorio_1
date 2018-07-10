@@ -52,6 +52,7 @@ int main() {
         printf(" 14- Levantar Clientes de archivo CSV.\n"); //ok
         printf(" 15- Levantar Clientes de archivo TXT.\n"); //ok
         printf(" 16- Levantar Clientes de archivo binario.\n"); // ok
+        printf(" 17- Levantar Ventas de archivo TXT.\n"); //
 
         printf(" 20- Salir.\n"); //
 
