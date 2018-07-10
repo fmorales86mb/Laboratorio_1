@@ -21,7 +21,7 @@ int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee)
 
     while(!feof(pFile)){
          fscanf(pFile, "%[^,],%[^,],%[^,],%s\n", auxInt, auxNombre, auxApellido, auxEmpty);
-nuevoEmpleado = employee_new();
+        nuevoEmpleado = employee_new();
 
          if(nuevoEmpleado !=NULL){
             nuevoEmpleado->id = atoi(auxInt);

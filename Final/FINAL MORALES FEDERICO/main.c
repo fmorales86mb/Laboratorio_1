@@ -8,6 +8,8 @@
 #include "input.h"
 #include "ArrayList.h"
 #include "abmPersona.h"
+#include "abmFecha.h"
+#include "abmVenta.h"
 
 #define STR 50
 #define STRLONG 1000
@@ -21,20 +23,13 @@
 int main() {
     ArrayList* listaClientes;
     ArrayList* listaVentas;
-    ArrayList* listaProductos;
 
     listaClientes = al_newArrayList();
     listaVentas = al_newArrayList();
-    listaProductos = al_newArrayList();
 
     char seguir='s';
     int opcion=0;
     int flag;
-
-    //crearCSV("clientes.csv");
-    //cargarProductos(listaProductos);
-    //levantarListaClientes(listaClientes, FILE_NAME_CLIENTES);
-    //levantarClientes(listaClientes);
 
     while(seguir=='s')
     {
@@ -44,17 +39,20 @@ int main() {
         printf(" 2- Modificacion de Cliente.\n"); //ok
         printf(" 3- Baja de Cliente.\n"); // ok
         printf(" 4- Listar Clientes.\n"); // ok
-        printf(" 6- Realizar una venta.\n"); //
-        printf(" 7- Informar ventas.\n"); //
+
+        printf(" 6- Realizar una venta.\n"); // ok
+        printf(" 7- Informar ventas.\n"); // ok
         printf(" 8- Informar ventas por producto.\n"); //
         printf(" 9- Generar informe de ventas.\n"); //
-        printf(" 10- Informar cantidad de ventas por Cliente.\n"); //
+        printf(" 10- Informar cantidad de ventas por Cliente.\n"); // ok
+
         printf(" 11- Guardar Clientes en archivo TXT.\n"); //ok
         printf(" 12- Guardar Clientes en archivo binario.\n"); // ok
         printf(" 13- Guardar Clientes en archivo CSV.\n"); //ok
         printf(" 14- Levantar Clientes de archivo CSV.\n"); //ok
         printf(" 15- Levantar Clientes de archivo TXT.\n"); //ok
         printf(" 16- Levantar Clientes de archivo binario.\n"); // ok
+
         printf(" 20- Salir.\n"); //
 
         do
@@ -65,35 +63,28 @@ int main() {
         switch(opcion)
         {
             case 1:
-                system("cls");
-                altaPersona(listaClientes);
-                system("pause");
+                altaCliente(listaClientes);
                 break;
             case 2:
-                system("cls");
-                listarPersonas(listaClientes);
-                modificarPersona(listaClientes);
-                system("pause");
+                modificacionCliente(listaClientes);
                 break;
             case 3:
-                system("cls");
-                listarPersonas(listaClientes);
-                bajaPersona(listaClientes);
+                bajaCliente(listaClientes, listaVentas);
                 break;
             case 4:
-                system("cls");
-                listarPersonas(listaClientes);
-                system("pause");
-               break;
-            case 5:
-                system("cls");
-                levantarCVS(listaClientes);
-                system("pause");
+                listarClientes(listaClientes);
                 break;
             case 6:
-                system("cls");
-                realizarVenta(listaClientes, listaVentas);
-                system("pause");
+                opcionAltaVenta(listaClientes, listaVentas);
+                break;
+            case 7:
+                opcionListarVenta(listaVentas);
+                break;
+            case 8:
+                informarVentasPorProducto(listaVentas);
+                break;
+            case 10:
+                informarVentasPorCliente(listaClientes, listaVentas);
                 break;
             case 11:
                 system("cls");

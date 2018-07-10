@@ -383,3 +383,94 @@
 	<stdlib.h>
 	"abmFecha.h"
 
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmfecha.c
+	"abmFecha.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmfecha.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionStr.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\validacionstr.h
+
+1531166387 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmpersona.c
+	"abmPersona.h"
+
+1531166387 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmpersona.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"abmVenta.h"
+	"abmFecha.h"
+	"ArrayList.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\arraylist.h
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\bibstrvalidacion.h
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmproducto.c
+	"abmProducto.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmproducto.h
+	<stdio.h>
+	<stdlib.h>
+
+1531175767 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmventa.c
+	"abmVenta.h"
+
+1531175767 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\abmventa.h
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"abmFecha.h"
+	"abmPersona.h"
+
+1531166016 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1531175783 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\funciones.c
+	"funciones.h"
+
+1531175767 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\funciones.h
+	"ArrayList.h"
+	"abmPersona.h"
+	"abmFecha.h"
+	"abmProducto.h"
+	"abmVenta.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\input.h
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1531175767 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+	"abmPersona.h"
+	"abmFecha.h"
+	"abmVenta.h"
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final morales federico\validacionstr.c
+	<string.h>
+

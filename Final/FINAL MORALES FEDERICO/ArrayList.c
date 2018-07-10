@@ -459,7 +459,7 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
 /** \brief Sorts objects of list, use compare pFunc
  * \param pList ArrayList* Pointer to arrayList
  * \param pFunc (*pFunc) Pointer to fuction to compare elements of arrayList
- * pFunc return [1] if a>b, [-1] if a<b, [0] if a=b
+ * pFunc return [>0] if a>b, [<0] if a<b, [0] if a=b
  * \param order int  [1] indicate UP(ascendente) - [0] indicate DOWN (descendente)
  * \return int Return (-1) if Error [pList or pFunc are NULL pointer]
  *                  - (0) if ok

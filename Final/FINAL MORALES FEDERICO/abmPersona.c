@@ -169,36 +169,44 @@ int altaPersona(ArrayList *lista)
     return retorno;
 }
 
-void listarPersonas(ArrayList* lista)
+void listarPersonas(ArrayList* lista, int (*pFunc)(void* ,void*), int descendente)
 {
-    EPersona *elemento;
+    EPersona *elemento = NULL;
     int i;
 
-    //lista = lista->sort(lista, comparaElementos, 0);
-    printf("\n ID   Apellido     Nombre     DNI        Fecha Nacimiento\n\n");
-
-    for(i=0; i<lista->len(lista); i++) {
-        elemento = lista->get(lista, i);
-        if (elemento->estado == ACTIVO)
-        {
-            printf("   %d      %s        %s    %ld  %d/%d/%d \n", elemento->id, elemento->apellido, elemento->nombre, elemento->dni,
-               elemento->fechaNac->anio, elemento->fechaNac->mes, elemento->fechaNac->dia);
+    if (lista->sort(lista, pFunc, descendente) == 0)
+    {
+        printf("\n ID   Apellido     Nombre     DNI        Fecha Nacimiento\n\n");
+        for(i=0; i<lista->len(lista); i++) {
+            elemento = lista->get(lista, i);
+            if (elemento->estado == ACTIVO)
+            {
+                printf("   %d      %s        %s    %ld  %d/%d/%d \n", elemento->id, elemento->apellido, elemento->nombre, elemento->dni,
+                   elemento->fechaNac->anio, elemento->fechaNac->mes, elemento->fechaNac->dia);
+            }
         }
-
     }
-
     printf("\n");
 }
 
-int comparaElementos(void* elementoA, void* elementoB)
+int comparaPorApellido(void* elementoA, void* elementoB)
 {
-    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
+    if (elementoA != NULL && elementoB != NULL)
     {
-        return 1;
+        EPersona* a = (EPersona*) elementoA;
+        EPersona* b = (EPersona*) elementoB;
+        return strcmp(a->apellido, b->apellido);
     }
-    if(strcmp(((EPersona*)elementoA)->apellido , ((EPersona*)elementoB)->apellido))
+    return 0;
+}
+
+int comparaIdPersona (void* elementoA, void* elementoB)
+{
+    if (elementoA != NULL && elementoB != NULL)
     {
-        return -1;
+        EPersona* a = (EPersona*) elementoA;
+        EPersona* b = (EPersona*) elementoB;
+        return a->id - b->id;
     }
     return 0;
 }
@@ -214,6 +222,17 @@ int pedirIdPersona ()
     }while (flag == -1);
 
     return id;
+}
+
+int pedirIdPersonaExistente (ArrayList* lista, int* id)
+{
+    *id = pedirIdPersona();
+    int index = buscarPersona(lista, *id);
+    if (index == -1)
+    {
+        printf("\n Id inexistente.\n");
+    }
+    return index;
 }
 
 int bajaLogicaPersona (ArrayList* lista, int index)
@@ -248,6 +267,35 @@ void bajaPersona(ArrayList* lista)
     else
     {
         printf("\nError: Elemento no encontrado o lista inexistente.\n");
+        system("pause");
+    }
+}
+
+void bajaPersonaV(ArrayList* lista, ArrayList* listaV)
+{
+    int id = 0;
+    int index = -1;
+    ArrayList* ventasCliente = NULL;
+
+    index = pedirIdPersonaExistente(lista, &id);
+    ventasCliente = listaVentasIdCliente(listaV, id);
+
+    if (ventasCliente->isEmpty(ventasCliente) == 1)
+    {
+        if (bajaLogicaPersona(lista, index))
+        {
+            printf("\nEl elemento se dio de baja correctamente\n");
+            system("pause");
+        }
+        else
+        {
+            printf("\nError: Elemento no encontrado o lista inexistente.\n");
+            system("pause");
+        }
+    }
+    else
+    {
+        printf("\n El cliente posee ventas asociadas. No puede darse de baja. \n");
         system("pause");
     }
 }
