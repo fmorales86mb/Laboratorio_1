@@ -1,0 +1,96 @@
+# depslib dependency file v1.0
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmfecha.c
+	"abmFecha.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmfecha.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validacionStr.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\validacionstr.h
+
+1531274624 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.c
+	"abmProducto.h"
+
+1531166016 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\arraylist.h
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1531274842 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.c
+	"funciones.h"
+	<stdlib.h>
+
+1531274842 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.h
+	<stdlib.h>
+	"ArrayList.h"
+	"abmPersona.h"
+	"abmFecha.h"
+	"abmProducto.h"
+	"abmVenta.h"
+
+1531257635 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmpersona.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"abmVenta.h"
+	"abmFecha.h"
+	"ArrayList.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+
+1531263389 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.h
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"abmFecha.h"
+	"abmPersona.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\bibstrvalidacion.h
+
+1531274001 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1531274692 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+	"abmPersona.h"
+	"abmFecha.h"
+	"abmVenta.h"
+
+1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\input.h
+
+1531092992 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\validacionstr.c
+	<string.h>
+
+1531271852 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmpersona.c
+	"abmPersona.h"
+
+1531263885 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.c
+	"abmVenta.h"
+
