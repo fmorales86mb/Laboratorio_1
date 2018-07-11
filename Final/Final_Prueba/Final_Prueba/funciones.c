@@ -9,18 +9,20 @@ void altaCliente (ArrayList* listaC, char* nameFile)
     system("pause");
 }
 
-void modificacionCliente (ArrayList* listaC)
+void modificacionCliente (ArrayList* listaC, char* nameFile)
 {
     system("cls");
     listarPersonas(listaC, comparaIdPersona, 1);
     modificarPersona(listaC);
+    guardarCsvTxtPersona(listaC, nameFile, sizeof(EPersona), 0);
     system("pause");
 }
 
-void bajaCliente (ArrayList* listaC, ArrayList* listaV)
+void bajaCliente (ArrayList* listaC, ArrayList* listaV, char* nameFile)
 {
     system("cls");
     listarPersonas(listaC, comparaIdPersona, 1);
+    guardarCsvTxtPersona(listaC, nameFile, sizeof(EPersona), 0);
     bajaPersonaV(listaC, listaV);
 }
 
@@ -31,40 +33,43 @@ void listarClientes (ArrayList* listaC)
     system("pause");
 }
 
-void opcionAltaVenta (ArrayList* listaC, ArrayList* listaV)
+void opcionAltaVenta (ArrayList* listaC, ArrayList* listaV, ArrayList* listaP, char* nameFile) // replantear
 {
     system("cls");
 
-    int idCliente, index;
+    int idCliente, indexC, indexP, idProducto;
     int flag = 0;
 
     listarPersonas(listaC, comparaIdPersona, 1);
-    index = pedirIdPersonaExistente(listaC, &idCliente);
-    if (index>-1) flag = 1;
+    indexC = pedirIdPersonaExistente(listaC, &idCliente);
+    if (indexC>-1) flag = 1;
 
-    if (!flag)
+    if (flag)
     {
-
+        system("cls");
+        listarProductos(listaP, comparaIdProducto, 1);
+        indexP = pedirIdProductoExistente(listaP, &idProducto);
+        if (indexP<0) flag = 0;
     }
+    if (flag)
+    {
+        system("cls");
+        int cant = pedirCantidadVenta();
+        EVenta * venta = NULL;
+        int idVenta = generarIdVenta(listaV);
+        venta = newEventaIni(idCliente, idVenta, cant, idProducto);
+        agregarVenta(listaV, venta);
+        guardarCsvTxtVentas(listaV, nameFile, sizeof(EVenta), 0);
+    }
+
     system("pause");
 }
 
 void opcionListarVenta(ArrayList* listaV)
 {
     system("cls");
-    //listarVenta(listaV, comparaIdVenta, 1);
+    listarVentas(listaV, comparaIdVenta, 1);
     system("pause");
-}
-
-
-
-
-
-void crearCSV(char* fileName)
-{
-    FILE* archivo;
-    archivo = fopen(fileName, "w");
-    fclose(archivo);
 }
 
 void levantarCVS(ArrayList* lista)

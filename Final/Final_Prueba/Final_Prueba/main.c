@@ -32,7 +32,11 @@ int main() {
     int opcion=0;
     int flag;
 
+    printf(" Lista de Ventas:");
+    cargarCsvTxtVenta(listaVentas, FILE_NAME_VENTAS_TXT, 0);
+    printf("\n Lista de Clientes:");
     cargarCsvTxtPersonas(listaClientes, FILE_NAME_CLIENTES_TXT, 0);
+    printf("\n Lista de Productos:");
     cargarCsvTxtProducto(listaProductos, FILE_NAME_PRODUCTOS_TXT, 0);
     system("pause");
 
@@ -65,16 +69,16 @@ int main() {
                 altaCliente(listaClientes, FILE_NAME_CLIENTES_TXT);
                 break;
             case 2:
-                modificacionCliente(listaClientes);
+                modificacionCliente(listaClientes, FILE_NAME_CLIENTES_TXT);
                 break;
             case 3:
-                bajaCliente(listaClientes, listaVentas);
+                bajaCliente(listaClientes, listaVentas, FILE_NAME_CLIENTES_TXT);
                 break;
             case 4:
                 listarClientes(listaClientes);
                 break;
             case 6:
-                opcionAltaVenta(listaClientes, listaVentas);
+                opcionAltaVenta(listaClientes, listaVentas, listaProductos, FILE_NAME_VENTAS_TXT);
                 break;
             case 7:
                 opcionListarVenta(listaVentas);

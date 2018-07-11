@@ -10,7 +10,7 @@
 
 1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\validacionstr.h
 
-1531274624 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.c
+1531275658 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.c
 	"abmProducto.h"
 
 1531166016 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\arraylist.c
@@ -26,11 +26,11 @@
 	<stdlib.h>
 	<string.h>
 
-1531274842 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.c
+1531277040 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.c
 	"funciones.h"
 	<stdlib.h>
 
-1531274842 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.h
+1531277886 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\funciones.h
 	<stdlib.h>
 	"ArrayList.h"
 	"abmPersona.h"
@@ -48,7 +48,7 @@
 	"bibStrValidacion.h"
 	"validacionStr.h"
 
-1531263389 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.h
+1531277505 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.h
 	<stdio.h>
 	<stdlib.h>
 	"ArrayList.h"
@@ -57,7 +57,7 @@
 
 1531092992 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\bibstrvalidacion.h
 
-1531274001 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.h
+1531275657 c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmproducto.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -70,7 +70,7 @@
 	<conio.h>
 	<ctype.h>
 
-1531274692 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\main.c
+1531277657 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -91,6 +91,6 @@
 1531271852 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmpersona.c
 	"abmPersona.h"
 
-1531263885 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.c
+1531277525 source:c:\users\fede\documents\desarrollo\utn\laboratorio_1\final\final_prueba\final_prueba\abmventa.c
 	"abmVenta.h"
 

@@ -13,15 +13,14 @@
 #define STRLONG 1000
 
 void altaCliente (ArrayList* listaC, char* nameFile); // 1
-void modificacionCliente (ArrayList* listaC); // 2
-void bajaCliente (ArrayList* listaC, ArrayList* listaV); // 3
+void modificacionCliente (ArrayList* listaC, char* nameFile); // 2
+void bajaCliente (ArrayList* listaC, ArrayList* listaV, char* nameFile); // 3
 void listarClientes (ArrayList* listaC); // 4
-void opcionAltaVenta (ArrayList* listaC, ArrayList* listaV); // 6
+void opcionAltaVenta (ArrayList* listaC, ArrayList* listaV, ArrayList* listaP, char* nameFile); // 6
 void opcionListarVenta(ArrayList* listaV); // 7
 void informarVentasPorProducto (ArrayList* listaV); // 8
 void informarVentasPorCliente (ArrayList* listaC, ArrayList* listaV); // 10
 
-void crearCSV(char* fileName);
 void levantarCVS(ArrayList* lista);
 
 

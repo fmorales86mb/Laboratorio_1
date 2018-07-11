@@ -18,6 +18,8 @@ void printProducto(EProducto* elemento);
 void listarProductos(ArrayList* lista, int (*pFunc)(void* ,void*), int descendente);
 int cargarCsvTxtProducto (ArrayList* lista, char* fileName, int encabezado);
 int comparaIdProducto (void* elementoA, void* elementoB);
-void levantarProd (ArrayList* lista);
+int pedirIdProductoExistente (ArrayList* lista, int* id);
+int pedirIdProducto ();
+int buscarProducto (ArrayList* lista, int id);
 
 #endif // ABMPRODUCTO_H_INCLUDED

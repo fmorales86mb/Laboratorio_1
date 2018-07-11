@@ -24,5 +24,9 @@ int comparaIdVenta (void* elementoA, void* elementoB);
 int buscarVentaId (ArrayList* lista, int id);
 ArrayList* listaVentasIdCliente (ArrayList* lista, int p_idCliente);
 ArrayList* listaVentasProducto (ArrayList* lista, int p_idProd);
+int pedirCantidadVenta ();
+int cargarCsvTxtVenta (ArrayList* lista, char* fileName, int encabezado);
+int guardarCsvTxtVentas (ArrayList *lista, char* nombre, int sizeOfStruct, int encabezado);
+
 
 #endif // ABMVENTA_H_INCLUDED

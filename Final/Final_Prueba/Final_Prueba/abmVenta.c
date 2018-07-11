@@ -142,4 +142,76 @@ ArrayList* listaVentasProducto (ArrayList* lista, int p_idProd)
     return ventasCliente;
 }
 
+int pedirCantidadVenta ()
+{
+    int cant;
+    int flag;
+
+    do
+    {
+        flag = pedirInt(&cant, " Ingrese cantidad: ", " Cantidad invalida.", 1, 10000);
+    }while (flag == -1);
+
+    return cant;
+}
+
+int cargarCsvTxtVenta (ArrayList* lista, char* fileName, int encabezado)
+{
+    int ret = 1;
+    char id[50], idCliente[500], idProd[500], cant[500];
+    EVenta* elemento = NULL;
+
+    FILE * pFile;
+
+    pFile = fopen (fileName, "r");
+    if (pFile != NULL)
+    {
+        if (encabezado) fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, idCliente, idProd, cant);
+        while(!(feof(pFile)))
+        {
+            fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", id, idCliente, idProd, cant);
+            elemento = newEventaIni(atoi(idCliente), atoi(id), atoi(cant), atoi(idProd));
+            lista->add(lista, elemento);
+        }
+        printf("\n Se levantaron los datos correctamente\n");
+    }
+    else
+    {
+        ret = 0;
+        printf("\n No se pudo abrir archivo \n");
+    }
+    fclose(pFile);
+    return ret;
+}
+
+int guardarCsvTxtVentas (ArrayList *lista, char* nombre, int sizeOfStruct, int encabezado)
+{
+    int i;
+    int retorno = 0;
+    FILE *archivo;
+    EVenta* elemento= NULL;
+
+    archivo = fopen(nombre, "w");
+
+    if (archivo == NULL)
+    {
+        printf("\n El archivo no puede ser abierto.\n");
+        retorno = 0;
+    }
+    else
+    {
+        retorno = 1;
+        if (encabezado) fprintf(archivo, "ID,IdCliente,IdProducto,Cantidad\n");
+        for(i=0; i<lista->len (lista); i++)
+        {
+            elemento = lista->get(lista, i);
+            // con comas o pto y coma. El Excel separa las columnas con pto y coma.
+            fprintf(archivo, "%d,%d,%d,%d\n",elemento->id, elemento->idCliente, elemento->idProducto, elemento->cantidad);
+        }
+    }
+
+    fclose(archivo);
+
+    return retorno;
+}
 

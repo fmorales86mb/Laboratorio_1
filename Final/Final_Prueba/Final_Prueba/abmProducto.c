@@ -91,10 +91,44 @@ int comparaIdProducto (void* elementoA, void* elementoB)
     return 0;
 }
 
-void levantarProd (ArrayList* lista)
+int pedirIdProductoExistente (ArrayList* lista, int* id)
 {
-    EProducto* prod = NULL;
-    char b [12] = "as";
-    prod = newEProductoIni(2, 2.3, b);
+    *id = pedirIdProducto();
+    int index = buscarProducto(lista, *id);
+    if (index == -1)
+    {
+        printf("\n Id inexistente.\n");
+    }
+    return index;
 }
 
+int pedirIdProducto ()
+{
+    int id;
+    int flag;
+
+    do
+    {
+        flag = pedirInt(&id, " Ingrese ID: ", " ID invalido.", 1, 10000);
+    }while (flag == -1);
+
+    return id;
+}
+
+int buscarProducto (ArrayList* lista, int id)
+{
+    int i;
+    int index = -1;
+    EProducto* elemento;
+
+    for(i=0; i<lista->len(lista); i++)
+    {
+        elemento = lista->get(lista, i);
+        if(elemento->id == id)
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
